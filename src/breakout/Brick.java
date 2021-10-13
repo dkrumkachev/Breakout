@@ -3,6 +3,8 @@ package breakout;
 import java.awt.Color;
 import java.awt.Graphics;
 
+
+
 public class Brick {
 
     int brickXPos, brickYPos; // переменные координат позиции блока.
@@ -24,5 +26,9 @@ public class Brick {
     }
 
 
+    public static void main(String[] args) {
+
+    }
 }
+
 
