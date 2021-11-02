@@ -3,8 +3,6 @@ package breakout;
 import java.awt.Color;
 import java.awt.Graphics;
 
-
-
 public class Brick {
 
     int brickXPos, brickYPos;
@@ -27,6 +25,7 @@ public class Brick {
 
     public void drawBrick(Graphics g){
 
+
         g.fill3DRect(brickXPos, brickYPos, brickWidth, brickHeight, true);
         g.setColor(Color.white);
         g.drawRect(brickXPos, brickYPos, brickWidth, brickHeight);
@@ -35,9 +34,6 @@ public class Brick {
 
 
 
-    public static void main(String[] args) {
-
-    }
 }
 
 
