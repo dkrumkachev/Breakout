@@ -5,31 +5,35 @@ import java.awt.Graphics;
 
 public class Brick {
 
-    int brickXPos, brickYPos; // переменные координат позиции блока.
+    int brickXPos, brickYPos;
 
-    int brickWidth = 80; // ширина блока.
-    int brickHeight = 40; // высота блока.
+    int brickWidth = 80; 
+    int brickHeight = 40;
 
-    int xOffset = 150; // отступ справа.
-    int yOffset = 50; // отступ сверху.
+    int xOffset = 150;
+    int yOffset = 50;
 
-    int xGap = 10; // промежуток по горизонтали.
-    int yGap = 10; // промежуток по вертикали.
+    int xGap = 10;
+    int yGap = 10;
 
     public Brick(int i, int j) {
 
-        brickXPos = xOffset + brickWidth * j + xGap * j;  // горизонтальная координата левого верхнего угла блока.
-        brickYPos = yOffset + brickHeight * i + yGap * i; // вертикальная координата левого врехнего угла блока.
+        brickXPos = xOffset + brickWidth * j + xGap * j;
+        brickYPos = yOffset + brickHeight * i + yGap * i;
 
     }
 
     public void drawBrick(Graphics g){
+
 
         g.fill3DRect(brickXPos, brickYPos, brickWidth, brickHeight, true);
         g.setColor(Color.white);
         g.drawRect(brickXPos, brickYPos, brickWidth, brickHeight);
 
     }
+
+
+
 }
 
 
