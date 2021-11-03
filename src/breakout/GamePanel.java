@@ -107,13 +107,13 @@ public class GamePanel extends JPanel {
 
             drawBrickMap(g);
 
-            g.setColor(Color.BLUE);//цвет каретки
+            g.setColor(Color.BLUE);//karetka colour
             g.fill3DRect(batXPos, batYPos, batWidth, batHeight, true);
             g.setColor(Color.BLACK);
             g.drawRect(batXPos, batYPos, batWidth, batHeight);
 
 
-            g.setColor(Color.white);//цвет мяча
+            g.setColor(Color.white);//ball colour
             g.fillOval(ballXPos, ballYPos, ballDia, ballDia);
 
 
@@ -396,8 +396,8 @@ public class GamePanel extends JPanel {
             if (!startGame && !gameOver) {
                 if (key == KeyEvent.VK_SPACE) {
                     startGame = true;
-                    ballXVel = 3;
-                    ballYVel = 3;
+                    ballXVel = 1;
+                    ballYVel = 1;
                     t.start();
                 }
             }
@@ -425,14 +425,14 @@ public class GamePanel extends JPanel {
             if (startGame) {
                 if (key == KeyEvent.VK_LEFT) {
                     if (batXPos >= 0) {
-                        batXVel = -10;
+                        batXVel = -5;
 
                     } else
                         batXVel = 0;
                 }
                 if (key == KeyEvent.VK_RIGHT) {
                     if (batXPos + batWidth <= width) {
-                        batXVel = 10;
+                        batXVel = 5;
 
                     } else
                         batXVel = 0;
