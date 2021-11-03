@@ -18,7 +18,7 @@ public class BreakOut extends JFrame {
         GamePanel p = new GamePanel();
         c.add(p);
         game.pack();
-        game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        game.setDefaultCloseOperation(BreakOut.EXIT_ON_CLOSE);
         c.setBackground(Color.blue);
         game.setResizable(false);
         game.setLocationRelativeTo(null);
