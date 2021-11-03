@@ -5,7 +5,8 @@ import java.awt.Graphics;
 
 public class Brick {
 
-    int brickXPos, brickYPos;
+    int brickXPos;
+    int brickYPos;
 
     int brickWidth = 80; 
     int brickHeight = 40;
