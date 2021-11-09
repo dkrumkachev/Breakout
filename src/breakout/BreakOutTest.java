@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class BreakOutTest{
 
     @Test
-    @DisplayName("Order Matrix for 3 cols 3 rows for order matrix same elements")
+    @DisplayName("")
     public void test1(){
         boolean expectedResult = true;
         boolean actualResult;
