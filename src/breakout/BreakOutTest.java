@@ -10,8 +10,8 @@ import static org.junit.Assert.assertEquals;
 public class BreakOutTest{
 
     @Test
-    @DisplayName("")
-    public void test1(){
+    @DisplayName("Test BreakOut setResizable")
+    public void testGameResizable(){
         boolean expectedResult = true;
         boolean actualResult;
         JInternalFrame game = new JInternalFrame();
