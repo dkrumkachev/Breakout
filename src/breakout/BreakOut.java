@@ -6,11 +6,16 @@ import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 
+/***
+ * Class BreakOut. Main class of the project.
+ */
 public class BreakOut extends JFrame {
     public BreakOut(){
         super("BreakOut");
     }
-
+    /***
+     * Running the project.
+     */
     public static void main(String[] args) {
         BreakOut game = new BreakOut();
         Container c = game.getContentPane();
