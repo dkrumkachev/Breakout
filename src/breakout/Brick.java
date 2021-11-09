@@ -18,23 +18,15 @@ public class Brick {
     int yGap = 10;
 
     public Brick(int i, int j) {
-
         brickXPos = xOffset + brickWidth * j + xGap * j;
         brickYPos = yOffset + brickHeight * i + yGap * i;
-
     }
-
     public void drawBrick(Graphics g){
-
-
         g.fill3DRect(brickXPos, brickYPos, brickWidth, brickHeight, true);
         g.setColor(Color.white);
         g.drawRect(brickXPos, brickYPos, brickWidth, brickHeight);
 
     }
-
-
-
 }
 
 
