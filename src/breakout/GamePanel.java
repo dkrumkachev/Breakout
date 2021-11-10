@@ -169,7 +169,81 @@ public class GamePanel extends JPanel {
             }
         }
 
+        @Override
         public void actionPerformed(ActionEvent arg0) {
+            ballXPos += ballXVel;
+            ballYPos += ballYVel;
+            batXPos += batXVel;
+
+            if (batXPos < 0 || batXPos + batWidth > width) {
+                batXVel = 0;
+            }
+
+            if (ballXPos < 0 || ballXPos + ballDia >= width) {
+                ballXVel = -ballXVel;
+            }
+            if (ballYPos < 0) {
+                ballYVel = -ballYVel;
+            }
+            if (ballYPos >= height) {
+
+                s.life--;
+                if (s.life == 0) {
+                    gameOver = true;
+                    startGame = false;
+                    t.stop();
+                } else {
+                    batXPos = 550;
+                    batYPos = 550;
+                    ballXPos = (batXPos + (batWidth / 2) - (ballDia / 2));
+                    ballYPos = batYPos - ballDia - 3;
+                    ballXVel = 0;
+                    ballYVel = 0;
+                    startGame = false;
+                }
+            }
+
+            Ellipse2D.Double ball = new Ellipse2D.Double(ballXPos, ballYPos, ballDia, ballDia);
+            Rectangle2D.Double bat = new Rectangle2D.Double(batXPos, batYPos, batWidth, batHeight);
+
+            if (!batCollide) {
+                if (((ballYPos + ballDia) == batYPos) &&
+                        (ballXPos + (ballDia / 2)) >= batXPos &&
+                        ((ballXPos + (ballDia / 2)) <= (batXPos + batWidth))) {
+                    System.out.println("bat vertical");
+                    ballYVel = -ballYVel;
+                    batCollide = true;
+                } else {
+                    if (ball.intersects(bat)) {
+                        if (ballXPos < (batXPos + batWidth / 2) && ballYPos < (batYPos + batHeight)) {
+                            if (ballXVel < 0 && ballYVel > 0) {
+                                ballYVel = -ballYVel;
+                                System.out.println("bat vertical");
+                            } else if (ballXVel > 0 && ballYVel > 0) {
+                                ballYVel = -ballYVel;
+                                ballXVel = -ballXVel;
+                                System.out.println("bat diagonal");
+                            }
+                        } else if (ballXPos > (batXPos + batWidth / 2) && ballYPos < (batYPos + batHeight)) {
+                            if (ballXVel < 0 && ballYVel > 0) {
+                                ballYVel = -ballYVel;
+                                ballXVel = -ballXVel;
+                                System.out.println("bat diagonal");
+                            } else if (ballXVel > 0 && ballYVel > 0) {
+                                ballYVel = -ballYVel;
+                                System.out.println("bat vertical");
+                            }
+                        }
+                        batCollide = true;
+                    }
+                }
+            }
+
+            if (batCollide && !ball.intersects(bat)) {
+                batCollide = false;
+            }
+
+            public void actionPerformed(ActionEvent arg0) {
             A:
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
