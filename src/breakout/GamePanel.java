@@ -289,6 +289,16 @@ public class GamePanel extends JPanel {
             }
         }
 
+        void update(int i, int j) {
+            brickvalue[i][j] = 0;
+            if (i == 4) s.score += 1;
+            if (i == 3) s.score += 3;
+            if (i == 2) s.score += 5;
+            if (i == 1) s.score += 7;
+            if (i == 0) s.score += 9;
+            bricksleft--;
+        }
+
         public void drawOptions(Graphics g) {
             g.setColor(Color.BLACK);
             g.setFont(new Font("Times new roman", Font.ITALIC, 42));
