@@ -28,6 +28,10 @@ public class GamePanel extends JPanel {
         this.add(p);
     }
 
+    /***
+     * Class ScoreBoard. This class includes counters of lives, points and draws them.
+     * @author Dmitry Krumkachev.
+     */
     public class ScoreBoard extends JPanel {
         int score = 0;
         int life = 3;
