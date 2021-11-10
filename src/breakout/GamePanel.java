@@ -60,6 +60,115 @@ public class GamePanel extends JPanel {
     public class MainPanel extends JPanel implements ActionListener, KeyListener {
         Timer t;
 
+        int width = 1220, height = 600;
+
+        //bat
+        int batxpos = 500, batypos = 740;
+        int batxvel = 0;
+        int batwidth = 130, batheight = 5;
+
+        //ball
+
+        int balldia = 30;
+        int ballxpos = (batxpos + (int) (batwidth / 2) - (balldia / 2)), ballypos = batypos - balldia - 3;
+        int ballxvel = 0, ballyvel = 0;
+
+
+        //bricks
+        int rows = 5, cols = 10;
+        Brick b[][] = new Brick[rows][cols];
+        int brickvalue[][] = new int[rows][cols];
+        int bricksleft = rows * cols;
+
+        //game variables
+        boolean gameover = false;
+        boolean startgame = false;
+        boolean winner = false;
+
+        boolean batcollide = false;
+
+
+        public MainPanel() {
+            this.setPreferredSize(new Dimension(width, height));
+            this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
+            this.setBackground(Color.cyan);//цвет фона на мяче
+            t = new Timer(1, this);
+            setValue();
+            addKeyListener(this);
+            setFocusable(true);
+            this.setFocusTraversalKeysEnabled(false);
+
+            t.start();
+        }
+
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+
+            drawBrickMap(g);
+
+            g.setColor(Color.BLUE);//цвет каретки
+            g.fill3DRect(batxpos, batypos, batwidth, batheight, true);
+            g.setColor(Color.BLACK);
+            g.drawRect(batxpos, batypos, batwidth, batheight);
+
+
+            g.setColor(Color.white);//цвет мяча
+            g.fillOval(ballxpos, ballypos, balldia, balldia);
+
+
+            if (!startgame && !gameover) {
+                drawStartGame(g);
+            }
+
+            if (winner) {
+                drawOptions(g);
+                win(g);
+                t.stop();
+            }
+
+            if (gameover) {
+                drawOptions(g);
+                showGameOver(g);
+            }
+
+
+        }
+
+        public void drawBrickMap(Graphics g) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if (brickvalue[i][j] == 1) {
+                        switch (i) {
+                            case 0:
+                                g.setColor(Color.red);
+                                break;
+                            case 1:
+                                g.setColor(Color.orange);
+                                break;
+                            case 2:
+                                g.setColor(Color.yellow);
+                                break;
+                            case 3:
+                                g.setColor(Color.green);
+                                break;
+                            case 4:
+                                g.setColor(Color.blue);
+                        }
+                        b[i][j].drawBrick(g);
+                    }
+                }
+            }
+        }
+
+        public void setValue() {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    brickvalue[i][j] = 1;
+                    b[i][j] = new Brick(i, j);
+                }
+            }
+        }
+
         public void actionPerformed(ActionEvent arg0) {
             A:
             for (int i = 0; i < rows; i++) {
@@ -173,7 +282,38 @@ public class GamePanel extends JPanel {
                         }
                     }
                 }
+                if (bricksleft <= 0) {
+                    winner = true;
+                    t.stop();
+                }
+
+                repaint();
+                s.refresh();
+
             }
+        }
+
+        void update(int i, int j) {
+            brickvalue[i][j] = 0;
+            if (i == 4) s.score += 1;
+            if (i == 3) s.score += 3;
+            if (i == 2) s.score += 5;
+            if (i == 1) s.score += 7;
+            if (i == 0) s.score += 9;
+            bricksleft--;
+        }
+
+        public void drawOptions(Graphics g) {
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("Times new roman", Font.ITALIC, 42));
+            g.drawString("Press [ESC] to exit the game", width / 2 - 260, height / 2 + 120);
+            g.drawString("Press [R] to restart the game", width / 2 - 260, height / 2 + 170);
+        }
+
+        public void drawStartGame(Graphics g) {
+            g.setColor(Color.black);
+            g.setFont(new Font("Times new roman", Font.ITALIC, 42));
+            g.drawString("Press [Space] to start the game", width / 2 - 280, height / 2 + 30);
         }
     }
 }
