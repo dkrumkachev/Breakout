@@ -289,6 +289,17 @@ public class GamePanel extends JPanel {
             }
         }
 
+        public void drawOptions(Graphics g) {
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("Times new roman", Font.ITALIC, 42));
+            g.drawString("Press [ESC] to exit the game", width / 2 - 260, height / 2 + 120);
+            g.drawString("Press [R] to restart the game", width / 2 - 260, height / 2 + 170);
+        }
 
+        public void drawStartGame(Graphics g) {
+            g.setColor(Color.black);
+            g.setFont(new Font("Times new roman", Font.ITALIC, 42));
+            g.drawString("Press [Space] to start the game", width / 2 - 280, height / 2 + 30);
+        }
     }
 }
