@@ -6,17 +6,22 @@ import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 
+/***
+ * Class BreakOut. Main class of the project.
+ */
 public class BreakOut extends JFrame {
     public BreakOut(){
         super("BreakOut");
     }
-
+    /***
+     * Running the project.
+     */
     public static void main(String[] args) {
         BreakOut game = new BreakOut();
         Container c = game.getContentPane();
         c.setLayout(new FlowLayout(FlowLayout.CENTER));
         game.pack();
-        game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        game.setDefaultCloseOperation(BreakOut.EXIT_ON_CLOSE);
         c.setBackground(Color.blue);
         game.setResizable(false);
         game.setLocationRelativeTo(null);
