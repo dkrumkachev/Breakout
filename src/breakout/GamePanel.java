@@ -299,6 +299,112 @@ public class GamePanel extends JPanel {
             bricksleft--;
         }
 
+        public boolean isContinue(){
+            return (!startGame && !gameOver);
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int key = e.getKeyCode();
+            if (isContinue() && key == KeyEvent.VK_SPACE) {
+                startGame = true;
+                ballXVel = 3;
+                ballYVel = 3;
+                t.start();
+            }
+            if (!startGame) {
+                if (key == KeyEvent.VK_LEFT) {
+                    if (batXPos >= 0) {
+                        batXVel = -5;
+                        ballXVel = -5;
+                    } else {
+                        batXVel = 0;
+                        ballXVel = 0;
+                    }
+                }
+                if (key == KeyEvent.VK_RIGHT) {
+                    if (batXPos + batWidth <= width) {
+                        batXVel = 5;
+                        ballXVel = 5;
+                    } else {
+                        batXVel = 0;
+                        ballXVel = 0;
+                    }
+                }
+            }
+
+            if (startGame) {
+                if (key == KeyEvent.VK_LEFT) {
+                    if (batXPos >= 0) {
+                        batXVel = -10;
+                    } else
+                        batXVel = 0;
+                }
+                if (key == KeyEvent.VK_RIGHT) {
+                    if (batXPos + batWidth <= width) {
+                        batXVel = 10;
+                    } else
+                        batXVel = 0;
+                }
+            }
+
+            if (key == KeyEvent.VK_ESCAPE) {
+                System.exit(0);
+            }
+
+            if (key == KeyEvent.VK_R) {
+                batXPos = 500;
+                batYPos = 550;
+
+                ballXPos = (batXPos + (batWidth / 2) - (ballDia / 2));
+                ballYPos = batYPos - ballDia - 3;
+                ballXVel = 0;
+                ballYVel = 0;
+
+                brickLeft = rows * cols;
+
+                gameOver = false;
+                startGame = false;
+                winner = false;
+                setValue();
+                s.life = 3;
+                s.score = 0;
+                s.refresh();
+                t.start();
+            }
+            repaint();
+        }
+
+        @Override
+        public void keyReleased(KeyEvent arg0) {
+            if (!startGame) {
+                batXVel = 0;
+                ballXVel = 0;
+            } else
+                batXVel = 0;
+        }
+
+        public void keyTyped(KeyEvent arg0) {
+        }
+
+        void showGameOver(Graphics g) {
+            g.setColor(Color.orange);
+            g.setFont(new Font(FONT, Font.PLAIN, 40));
+            g.drawString("GAME OVER", width / 2 - 170, height / 2 + 10);
+            g.setColor(Color.GREEN);
+            g.setFont(new Font(FONT, Font.BOLD, 40));
+            g.drawString("SCORE : " + s.score, width / 2 - 150, height / 2 + 60);
+        }
+
+        void win(Graphics g) {
+            g.setColor(Color.ORANGE);
+            g.setFont(new Font(FONT, Font.ITALIC, 40));
+            g.drawString("You Have Cleared The Game.", width / 2 - 260, height / 2 - 120);
+            g.setColor(Color.GREEN);
+            g.setFont(new Font(FONT, Font.BOLD, 42));
+            g.drawString("SCORE : " + s.score, width / 2 - 150, height / 2 - 70);
+        }
+
         public void drawOptions(Graphics g) {
             g.setColor(Color.BLACK);
             g.setFont(new Font("Times new roman", Font.ITALIC, 42));
