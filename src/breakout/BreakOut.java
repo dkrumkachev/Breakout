@@ -5,7 +5,9 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
-
+/**
+ *Test javadock
+ *  */
 public class BreakOut extends JFrame {
     public BreakOut(){
         super("BreakOut");
