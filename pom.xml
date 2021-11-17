@@ -7,6 +7,7 @@
     <groupId>org.uni</groupId>
     <artifactId>breakout</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>Breakout</name>
          
    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,7 +15,7 @@
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
         <!-- Sonar -->
-	<sonar.organization>dkrumkachev_Breakout</sonar.organization>
+	<sonar.organization>dkrumkachev</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
