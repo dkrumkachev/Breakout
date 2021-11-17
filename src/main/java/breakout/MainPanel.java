@@ -1,3 +1,3 @@
-package breakout;
+package main.java.breakout;
 
 import javax.swing.*;
