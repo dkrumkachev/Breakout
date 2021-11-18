@@ -1,13 +1,14 @@
-package main.java.breakout;
+package test.java;
 
 
+import main.java.breakout.GamePanel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.util.Objects;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GamePanelTest {
 

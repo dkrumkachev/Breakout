@@ -1,11 +1,10 @@
-package main.java.breakout;
+package test.java;
 
-import org.junit.Test;
+import main.java.breakout.Brick;
 import org.junit.jupiter.api.DisplayName;
-
+import org.junit.jupiter.api.Test;
 import java.awt.*;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BrickTest {
 
