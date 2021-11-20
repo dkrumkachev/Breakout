@@ -1,7 +1,5 @@
 package test.java;
 
-
-import jdk.internal.jimage.ImageLocation;
 import main.java.breakout.GamePanel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GamePanelTest {
 
     private Object Graphics;
-    private ImageLocation Mockito;
 
     @Test
     @DisplayName("Test Create GamePanel")
