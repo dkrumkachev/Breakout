@@ -52,7 +52,6 @@ public class BreakOutTest{
         assertEquals(expectedResult, actualResult);
     }
 
-
     @Test
     @DisplayName("Test GamePack")
     public void testGamePack(){
@@ -84,6 +83,4 @@ public class BreakOutTest{
         actualResult = true;
         assertEquals(expectedResult, actualResult);
     }
-
-
 }

@@ -118,62 +118,6 @@ public class GamePanelTest {
     }
 
     @Test
-    @DisplayName("Test Press Keys")
-    public void testPressKeys(){
-        boolean expectedResult = true;
-        new GamePanel();
-        try {
-            keyTyped();
-        }catch (Exception ignored){
-
-        }
-        boolean actualResult = true;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    @DisplayName("Test Keys Released")
-    public void testReleasedKeys(){
-        boolean expectedResult = true;
-        new GamePanel();
-        try {
-            keyReleased();
-        }catch (Exception ignored){
-
-        }
-        boolean actualResult = true;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    @DisplayName("Test Keys Press")
-    public void testKeysPress(){
-        boolean expectedResult = true;
-        new GamePanel();
-        try {
-            keyPressed();
-        }catch (Exception ignored){
-
-        }
-        boolean actualResult = true;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    @DisplayName("Test Brick Map")
-    public void testBrickMap(){
-        boolean expectedResult = true;
-        new GamePanel();
-        try {
-            drawBrickMap();
-        }catch (Exception ignored){
-
-        }
-        boolean actualResult = true;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
     @DisplayName("Test Component")
     public void testComponent(){
 
@@ -208,37 +152,6 @@ public class GamePanelTest {
         }
         boolean actualResult = true;
         assertEquals(expectedResult, actualResult);
-    }
-
-    @Test
-    @DisplayName("Test Update")
-    public void testUpdate(){
-        boolean expectedResult = true;
-        new GamePanel();
-        try {
-            update();
-        }catch (Exception ignored){
-
-        }
-        boolean actualResult = true;
-        assertEquals(expectedResult, actualResult);
-    }
-
-    private void update() {
-    }
-
-    private void drawBrickMap() {
-    }
-
-    private void keyPressed() {
-    }
-
-
-    private void keyReleased() {
-
-    }
-
-    private void keyTyped() {
     }
 
     private void showGameOver(Graphics g) {
