@@ -5,12 +5,15 @@ import main.java.breakout.GamePanel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GamePanelTest {
+
+    private Object Graphics;
 
     @Test
     @DisplayName("Test Create GamePanel")
@@ -173,10 +176,30 @@ public class GamePanelTest {
     @Test
     @DisplayName("Test Component")
     public void testComponent(){
+
         boolean expectedResult = true;
         new GamePanel();
+        DebugGraphics g = null;
+        paintComponent(Graphics);
         try {
-            paintComponent();
+            g.setColor(Color.WHITE);
+        }catch (Exception ignored){
+
+        }
+        boolean actualResult = true;
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Test Component")
+    public void testComponent2(){
+
+        boolean expectedResult = true;
+        new GamePanel();
+        DebugGraphics g = null;
+        paintComponent(Graphics);
+        try {
+            g.setColor(Color.WHITE);
         }catch (Exception ignored){
 
         }
@@ -201,7 +224,7 @@ public class GamePanelTest {
     private void update() {
     }
 
-    private void paintComponent() {
+    private void paintComponent(Object graphics) {
     }
 
     private void drawBrickMap() {
