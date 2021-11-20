@@ -28,5 +28,9 @@ public class BreakOut extends JFrame {
         game.setVisible(true);
 
     }
+     public static int Sum(int a, int b){
+        int c = a + b;
+        return c;
+     }
 
 }

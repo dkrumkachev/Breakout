@@ -44,6 +44,19 @@ public class BreakOutTest{
     }
 
     @Test
+    @DisplayName("Test Create New Object Game")
+    public void testCreationGame2(){
+        int expectedResult = 12;
+        int actualResult = Sum(5, 7);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    public static int Sum(int a, int b){
+        int c = a + b;
+        return c;
+    }
+
+    @Test
     @DisplayName("Test GamePack")
     public void testGamePack(){
         boolean expectedResult = true;

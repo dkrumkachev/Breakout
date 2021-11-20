@@ -1,6 +1,7 @@
 package test.java;
 
 
+import jdk.internal.jimage.ImageLocation;
 import main.java.breakout.GamePanel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GamePanelTest {
 
     private Object Graphics;
+    private ImageLocation Mockito;
 
     @Test
     @DisplayName("Test Create GamePanel")
@@ -28,6 +30,7 @@ public class GamePanelTest {
         actualResult = true;
         assertEquals(expectedResult, actualResult);
     }
+
 
     @Test
     @DisplayName("Test Function Refresh")
@@ -190,6 +193,9 @@ public class GamePanelTest {
         assertEquals(expectedResult, actualResult);
     }
 
+    private void paintComponent(Object graphics) {
+    }
+
     @Test
     @DisplayName("Test Component")
     public void testComponent2(){
@@ -222,9 +228,6 @@ public class GamePanelTest {
     }
 
     private void update() {
-    }
-
-    private void paintComponent(Object graphics) {
     }
 
     private void drawBrickMap() {
@@ -276,4 +279,5 @@ public class GamePanelTest {
 
     private static class refresh {
     }
+
 }
