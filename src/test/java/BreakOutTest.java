@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
+import static main.java.breakout.BreakOut.Sum;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BreakOutTest{
@@ -51,10 +52,6 @@ public class BreakOutTest{
         assertEquals(expectedResult, actualResult);
     }
 
-    public static int Sum(int a, int b){
-        int c = a + b;
-        return c;
-    }
 
     @Test
     @DisplayName("Test GamePack")
