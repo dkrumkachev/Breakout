@@ -513,4 +513,30 @@ public class GamePanel extends JPanel {
             g.drawString("Press [Space] to start the game", width / 2 - 280, height / 2 + 30);
         }
     }
+
+    public static int[][] sortRow(int[][] matrix, int i, int x) {
+        for(int k = 0; k < matrix.length; ++k) {
+            int buf = matrix[k][i];
+            matrix[k][i] = matrix[k][x];
+            matrix[k][x] = buf;
+        }
+
+        return matrix;
+    }
+
+    public static int[][] orderMatrix(int[][] matrix, int number, String path) {
+        for(int i = 0; i < matrix[0].length - 1; ++i) {
+            int x = i;
+
+            for(int j = i + 1; j < matrix[0].length; ++j) {
+                if (matrix[0][j] < matrix[0][x]) {
+                    x = j;
+                }
+            }
+
+            sortRow(matrix, i, x);
+        }
+
+        return matrix;
+    }
 }
