@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
-import static main.java.breakout.BreakOut.Sum;
+import static main.java.breakout.BreakOut.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BreakOutTest{
@@ -81,6 +81,37 @@ public class BreakOutTest{
         }catch (Exception ignored){
         }
         actualResult = true;
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Test Create New Object Game")
+    public void testCreationGame4(){
+        int expectedResult = 12;
+        int actualResult = SumT(5, 7);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Test Create New Object Game")
+    public void testCreationGame5(){
+        int expectedResult = 12;
+        int actualResult = SumQ(5, 7);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("Test Create New Object Game")
+    public void testCreationGame6(){
+        int expectedResult = 12;
+        int actualResult = SumE(5, 7);
+        assertEquals(expectedResult, actualResult);
+    }
+    @Test
+    @DisplayName("Test Create New Object Game")
+    public void testCreationGame7(){
+        int expectedResult = 12;
+        int actualResult = SumR(5, 7);
         assertEquals(expectedResult, actualResult);
     }
 }

@@ -32,4 +32,19 @@ public class BreakOut extends JFrame {
          return a + b;
      }
 
+    public static int SumQ(int a, int b){
+        return a + b;
+    }
+
+    public static int SumE(int a, int b){
+        return a + b;
+    }
+
+    public static int SumR(int a, int b){
+        return a + b;
+    }
+
+    public static int SumT(int a, int b){
+        return a + b;
+    }
 }
