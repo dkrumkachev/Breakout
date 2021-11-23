@@ -3,6 +3,11 @@ package main.java.breakout;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * This class includes all data about bricks.
+ * @author Alexandr Ravodin.
+ *  */
+
 public class Brick {
 
     int brickXPos, brickYPos;
@@ -16,10 +21,23 @@ public class Brick {
     int xGap = 10;
     int yGap = 10;
 
+    /**
+     * This method create every break.
+     * @author Alexandr Ravodin.
+     * @param i row.
+     * @param j column.
+     *  */
+
     public Brick(int i, int j) {
         brickXPos = xOffset + brickWidth * j + xGap * j;
         brickYPos = yOffset + brickHeight * i + yGap * i;
     }
+
+    /**
+     * This method draw every brick.
+     * @author Alexandr Ravodin.
+     *  */
+
     public void drawBrick(Graphics g){
         g.fill3DRect(brickXPos, brickYPos, brickWidth, brickHeight, true);
         g.setColor(Color.white);
