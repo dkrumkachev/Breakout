@@ -5,15 +5,24 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
+
 /**
- *Test javadock
+ * Class BreakOut is the main class of project.
  *  */
+
 public class BreakOut extends JFrame {
     public BreakOut(){
         super("BreakOut");
 
 
     }
+
+    /**
+     * This is main method which starts project running.
+     * @author Daria Zavalyuk.
+     * @param args string.
+     *  */
+
     public static void main(String[] args) {
         BreakOut game = new BreakOut();
         Container c = game.getContentPane();
