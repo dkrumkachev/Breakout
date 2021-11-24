@@ -14,7 +14,6 @@ public class GamePanelTest {
         assertEquals(expectedResult, actualResult);
     }
 
-
     @Test
     @DisplayName("Sort Row for 6 rows 3 cols")
     void sortRow6x3(){
@@ -40,5 +39,17 @@ public class GamePanelTest {
         final boolean expectedResult = true;
         final boolean actualResult = expectedResult;
         assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("checkNumberSecondNumberTest")
+    void checkNumberSecondNumberTest() {
+        final int expectedResult1 = GamePanel.checkNumberSecondNumber(10);
+        final int actualResult1 = 4;
+        assertEquals(expectedResult1, actualResult1);
+        final int expectedResult2 = GamePanel.checkNumberSecondNumber(0);
+        final int actualResult2 = 4;
+        assertEquals(expectedResult2, actualResult2);
+
     }
 }
