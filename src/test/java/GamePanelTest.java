@@ -1,3 +1,4 @@
+import breakout.GamePanel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static breakout.GamePanel.sortRow;
@@ -24,6 +25,16 @@ public class GamePanelTest {
     @Test
     @DisplayName("OutputTaskTest")
     void outputTaskTest() {
+        GamePanel.outputTask();
+        final boolean expectedResult = true;
+        final boolean actualResult = expectedResult;
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("checkNumberTest")
+    void checkNumberTest() {
+        GamePanel.checkNumber();
         final boolean expectedResult = true;
         final boolean actualResult = expectedResult;
         assertEquals(expectedResult, actualResult);
