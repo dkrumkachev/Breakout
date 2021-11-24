@@ -13,13 +13,12 @@ public class GamePanel {
     }
 
     public static int checkNumber() {
-        in = new Scanner(System.in);
         boolean isInCorrect;
-        int number = 0;
+        int number = 4;
         do {
             isInCorrect = false;
             try {
-                number = Integer.parseInt(in.nextLine());
+                number = Integer.parseInt("3");
             } catch (Exception e) {
                 System.out.println("Проверьте корректность введенных данных!");
                 isInCorrect = true;
@@ -31,7 +30,6 @@ public class GamePanel {
                 isInCorrect = true;
             }
         } while (isInCorrect);
-        in.close();
         return number;
     }
 
