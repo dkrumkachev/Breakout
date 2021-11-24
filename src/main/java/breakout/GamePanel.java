@@ -173,7 +173,7 @@ public class GamePanel {
     public static void chooseOption(int[] massCopy, boolean isCorrect, int current, int secondNumber, int n, int amountSpace, int res, int line) {
         if (isCorrect)
         {
-            current = outputFirst(current, massCopy,  secondNumber, n);
+            current = massCopy.length + n;
             System.out.println( "|" +(current));
             System.out.print(" ");
             for(int j = 1; j <= line; j++)
@@ -188,7 +188,7 @@ public class GamePanel {
 
     public static int getAmountSpace(int ost, int amountSpace, String stringRes, int i) {
         if (ost == 0)
-            amountSpace = stringRes.length() + amountSpace;
+            amountSpace = stringRes.length();
         else
         {
             String stringOst = Integer.toString(ost);
