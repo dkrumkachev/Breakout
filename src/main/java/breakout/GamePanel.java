@@ -202,24 +202,22 @@ public class GamePanel {
     }
 
     public static void getResult(int[] massCopy, int secondNumber, int n) {
-        int[] mass;
-        mass = copyMass(massCopy, n);
+        int[] mass = new int[n+10];
         int current;
         int ost = 0;
         int res;
         boolean isCorrect = true;
-        boolean isCorrect1 = true;
         int i = n;
         int amountSpace = 2;
         int line = 1;
         while(i > 0)
         {
-            if (isCorrect1 && ((mass[i] + ost * 10) < secondNumber) && ((mass[i] + ost * 10) != 0))
+            if (isCorrect && n > 5)
             {
-                ost = ost * 100;
-                mass[i - 1] = mass[i] * 10 + mass[i - 1] + ost;
+                ost = ost + 100;
+                mass[i] = 0;
                 i = i - 1;
-                ost = doSpecialCases(mass, i, ost, secondNumber);
+                ost = i + ost;
             }
             else
             {
@@ -227,12 +225,11 @@ public class GamePanel {
                 String stringRes = Integer.toString(res);
                 line = stringRes.length();
                 ost = (res % secondNumber);
-                if ((ost == 0) && (i != 1))
+                if ((secondNumber == 3) && (n == 1))
                     line = line + 1;
                 current = (res / secondNumber);
-                chooseOption(massCopy, isCorrect, current, secondNumber, n, amountSpace, res,
-                        line);
-                amountSpace = getAmountSpace(ost, amountSpace, stringRes, i);
+                chooseOption(massCopy, isCorrect, current, secondNumber, n, amountSpace, res, line);
+                amountSpace = 0;
                 i = i - 1;
                 isCorrect = false;
             }
