@@ -1,12 +1,52 @@
 package breakout;
 
-import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class GamePanel {
+    public static void stepOfBinaryInsertionSort(int[] arr, int curr) {
+        if (arr[curr] < arr[curr-1]) {
+            int left = 0;
+            int right = curr - 1;
+            while (!(left > right)) {
+                int mid = (left + right) / 2;
+                if (arr[curr] < arr[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+
+            int tmp = arr[curr];
+
+            if (curr - left >= 0)
+                System.arraycopy(arr, left, arr, left + 1, curr - left);
+            arr[left] = tmp;
+        }
+    }
+
+    public static void stepByStepDetailingSort(int[] arr, int choice) {
+        int len = arr.length;
+        if (choice == 1) {
+            for (int i = 1; i < len; i++) {
+                stepOfBinaryInsertionSort(arr, i);
+            }
+
+        } else {
+            for (int i = 1; i < len; i++) {
+                stepOfBinaryInsertionSort(arr, i);
+            }
+        }
+    }
+
+    GamePanel() {}
+
     public static void outputTask() {
-        System.out.println("Программа позволяет ввести два натуральных числа m и n (m>n)\n" +
-                "казывает на экране правило деления «лесенкой» числа m на число n.");
-        System.out.println("Введите число 1: ");
+        int number1 = 10;
+        int number2 = 1;
+        int sum = number1 + number2;
+        getSpace(sum);
     }
 
     public static int checkNumber() {
@@ -17,13 +57,10 @@ public class GamePanel {
             try {
                 number = Integer.parseInt("3");
             } catch (Exception e) {
-                System.out.println("Проверьте корректность введенных данных!");
                 isInCorrect = true;
             }
             if ((!isInCorrect) && (number < 0))
             {
-                System.out.println("Проверьте корректность введенных данных!");
-                System.out.println("Введите натуральное число.");
                 isInCorrect = true;
             }
         } while (isInCorrect);
@@ -31,13 +68,10 @@ public class GamePanel {
     }
 
     public static int checkNumberSecondNumber(int firstNumber) {
-        System.out.println("Введите второе число: ");
         int secondNumber = checkNumber();
         while ((secondNumber > firstNumber) || (secondNumber == 0))
         {
-            System.out.println( "Проверьте корректность введенных данных!");
-            System.out.println("Введите число 2 большее, чем 1 и неравное 0!");
-            firstNumber = 1000;
+            firstNumber += 1000;
         }
         return secondNumber;
     }
@@ -54,8 +88,9 @@ public class GamePanel {
     }
 
     public static void getSpace(int offSet) {
+        int n = 0;
         for(int i = 2; i <= offSet; i++)
-            System.out.print(" ");
+            n += i;
     }
 
     public static int[] copyMass(int[] massCopy,int n) {
@@ -124,28 +159,23 @@ public class GamePanel {
         int firstcurrent = (current * secondNumber);
         String string = Integer.toString(firstcurrent);
         int lengthNumb = string.length();
-        System.out.print(a.length) ;
         current = secondNumber;
         getSpace(lengthFirstNumber);
-        System.out.print(" |");
         for(int j = 0; j < (current); j++)
-            System.out.print("-");
-        System.out.println();
-        System.out.print(" " + firstcurrent);
+            firstcurrent = j;
+        getSpace(firstcurrent);
         getSpace(lengthFirstNumber - lengthNumb + 1);
         return current;
     }
 
     public static void getGrafic(int amountSpace, int lengthLine, int res, int current, int secondNumber) {
         getSpace(amountSpace);
-        System.out.println(res);
-        System.out.println("-");
         getSpace(amountSpace);
-        System.out.println(current * secondNumber);
         getSpace(amountSpace);
+        int n = 0;
         for(int i = 1; i <= lengthLine; i++)
-            System.out.print("-");
-        System.out.println();
+            n += i;
+        getSpace(n);
     }
 
     public static int doSpecialCases(int[] mass, int i, int ost, int secondNumber) {
@@ -171,11 +201,9 @@ public class GamePanel {
         if (isCorrect)
         {
             current = massCopy.length + n;
-            System.out.println( "|" +(current));
-            System.out.print(" ");
             for(int j = 1; j <= line; j++)
-                System.out.print( "-");
-            System.out.println();
+                current += j;
+            getSpace(current);
         }
         else
         {
@@ -232,7 +260,6 @@ public class GamePanel {
             }
         }
         getSpace(amountSpace);
-        System.out.println(ost);
     }
 
     public static double[] getAverageScore(int number){
