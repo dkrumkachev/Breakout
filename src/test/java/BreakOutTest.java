@@ -45,7 +45,7 @@ public class BreakOutTest{
     @DisplayName("Test Create New Object Game")
     public void testCreationGame2(){
         int expectedResult = 12;
-        int actualResult = Sum(5, 7);
+        int actualResult = sum(5, 7);
         assertEquals(expectedResult, actualResult);
     }
 
@@ -85,7 +85,7 @@ public class BreakOutTest{
     @DisplayName("Test Create New Object Game")
     public void testCreationGame4(){
         int expectedResult = 12;
-        int actualResult = SumT(5, 7);
+        int actualResult = sumT(5, 7);
         assertEquals(expectedResult, actualResult);
     }
 
@@ -93,7 +93,7 @@ public class BreakOutTest{
     @DisplayName("Test Create New Object Game")
     public void testCreationGame5(){
         int expectedResult = 12;
-        int actualResult = SumQ(5, 7);
+        int actualResult = sumQ(5, 7);
         assertEquals(expectedResult, actualResult);
     }
 
@@ -101,14 +101,14 @@ public class BreakOutTest{
     @DisplayName("Test Create New Object Game")
     public void testCreationGame6(){
         int expectedResult = 12;
-        int actualResult = SumE(5, 7);
+        int actualResult = sumE(5, 7);
         assertEquals(expectedResult, actualResult);
     }
     @Test
     @DisplayName("Test Create New Object Game")
     public void testCreationGame7(){
         int expectedResult = 12;
-        int actualResult = SumR(5, 7);
+        int actualResult = sumR(5, 7);
         assertEquals(expectedResult, actualResult);
     }
 }

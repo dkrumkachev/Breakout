@@ -1,15 +1,14 @@
 package breakout;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GamePanel {
     public static void stepOfBinaryInsertionSort(int[] arr, int curr) {
         if (arr[curr] < arr[curr-1]) {
             int left = 0;
             int right = curr - 1;
-            while (!(left > right)) {
+            while (left <= right) {
                 int mid = (left + right) / 2;
                 if (arr[curr] < arr[mid]) {
                     right = mid - 1;
@@ -34,6 +33,7 @@ public class GamePanel {
             }
 
         } else {
+            getSpace(choice);
             for (int i = 1; i < len; i++) {
                 stepOfBinaryInsertionSort(arr, i);
             }
@@ -91,7 +91,10 @@ public class GamePanel {
         int n = 0;
         for(int i = 2; i <= offSet; i++)
             n += i;
+        Logger logger = Logger.getLogger("");
+        logger.log(Level.INFO, String.valueOf(n));
     }
+
 
     public static int[] copyMass(int[] massCopy,int n) {
         int[] mass = new int[10];
@@ -155,7 +158,7 @@ public class GamePanel {
         return current;
     }
 
-    public static int outputFirst(int current, int[] a, int secondNumber, int lengthFirstNumber) {
+    public static int outputFirst(int current, int secondNumber, int lengthFirstNumber) {
         int firstcurrent = (current * secondNumber);
         String string = Integer.toString(firstcurrent);
         int lengthNumb = string.length();
@@ -168,7 +171,7 @@ public class GamePanel {
         return current;
     }
 
-    public static void getGrafic(int amountSpace, int lengthLine, int res, int current, int secondNumber) {
+    public static void getGrafic(int amountSpace, int lengthLine) {
         getSpace(amountSpace);
         getSpace(amountSpace);
         getSpace(amountSpace);
@@ -197,17 +200,17 @@ public class GamePanel {
         return ost;
     }
 
-    public static void chooseOption(int[] massCopy, boolean isCorrect, int current, int secondNumber, int n, int amountSpace, int res, int line) {
+    public static void chooseOption(int[] massCopy, boolean isCorrect, int n, int amountSpace, int line) {
         if (isCorrect)
         {
-            current = massCopy.length + n;
+            line = massCopy.length + n;
             for(int j = 1; j <= line; j++)
-                current += j;
-            getSpace(current);
+                n += j;
+            getSpace(n);
         }
         else
         {
-            getGrafic(amountSpace, line, res, current, secondNumber);
+            getGrafic(amountSpace, line);
         }
     }
 
@@ -228,7 +231,6 @@ public class GamePanel {
 
     public static void getResult(int[] massCopy, int secondNumber, int n) {
         int[] mass = new int[n+10];
-        int current;
         int ost = 0;
         int res;
         boolean isCorrect = true;
@@ -252,11 +254,11 @@ public class GamePanel {
                 ost = (res % secondNumber);
                 if ((secondNumber == 3) && (n == 1))
                     line = line + 1;
-                current = (res / secondNumber);
-                chooseOption(massCopy, isCorrect, current, secondNumber, n, amountSpace, res, line);
+                chooseOption(massCopy, isCorrect, n, amountSpace, line);
                 amountSpace = 0;
                 i = i - 1;
                 isCorrect = false;
+
             }
         }
         getSpace(amountSpace);
@@ -315,7 +317,7 @@ public class GamePanel {
         return matrix;
     }
 
-    public static int[][] orderMatrix(int[][] matrix, int number, String path) {
+    public static int[][] orderMatrix(int[][] matrix, int number) {
         for(int i = 0; i < number; ++i) {
             int x = i;
 
@@ -331,16 +333,4 @@ public class GamePanel {
         return matrix;
     }
 
-    /*public static void main(String[] args) {
-        outputTask();
-        int firstNumber = checkNumber();
-        int secondNumber = checkNumberSecondNumber(firstNumber);
-        System.out.print( " " + firstNumber);
-        System.out.println( "|" + secondNumber);
-        String stringFirstNumber = Integer.toString(firstNumber);
-        int lengthFirstNumber = stringFirstNumber.length();
-        int[] mass;
-        mass = getMass(firstNumber, lengthFirstNumber);
-        getResult(mass, secondNumber, lengthFirstNumber);
-    }*/
 }
