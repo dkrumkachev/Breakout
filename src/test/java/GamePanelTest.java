@@ -223,7 +223,7 @@ public class GamePanelTest {
         assertEquals(expectedResult2, actualResult2);
         assertEquals(expectedResult3, actualResult3);
     }
-/*
+
     @Test
     @DisplayName("checkRestElemTest")
     void checkRestElemTest() {
@@ -249,7 +249,7 @@ public class GamePanelTest {
         assertEquals(expectedResult6, actualResult6);
         assertEquals(expectedResult7, actualResult7);
     }
-*/
+
     @Test
     @DisplayName("isStringToCharTest")
     void isStringToCharTest() {
@@ -261,6 +261,26 @@ public class GamePanelTest {
         assertEquals(expectedResult2, actualResult2);
     }
 
+    @Test
+    @DisplayName("stepOfBinaryInsertionSortTest")
+    void stepOfBinaryInsertionSortTest() {
+        GamePanel.stepOfBinaryInsertionSort(new int[]{1, 2, 3}, 1);
+        GamePanel.stepOfBinaryInsertionSort(new int[]{3, 2, 1}, 1);
+        final boolean actualResult = true;
+        final boolean expectedResult = actualResult;
+        assertEquals(expectedResult, actualResult);
+    }
 
+    @Test
+    @DisplayName("stepByStepDetailingSortTest")
+    void stepByStepDetailingSortTest() {
+        GamePanel.stepByStepDetailingSort(new int[]{1, 2, 3}, 1);
+        GamePanel.stepByStepDetailingSort(new int[]{1, 2, 3}, 0);
+        GamePanel.stepByStepDetailingSort(new int[]{}, 1);
+        GamePanel.stepByStepDetailingSort(new int[]{}, 0);
+        final boolean actualResult = true;
+        final boolean expectedResult = actualResult;
+        assertEquals(expectedResult, actualResult);
+    }
 
 }
