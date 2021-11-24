@@ -40,7 +40,7 @@ public class GamePanel {
         {
             System.out.println( "Проверьте корректность введенных данных!");
             System.out.println("Введите число 2 большее, чем 1 и неравное 0!");
-            secondNumber = checkNumber();
+            firstNumber = 1000;
         }
         return secondNumber;
     }
