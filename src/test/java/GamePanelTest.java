@@ -64,8 +64,90 @@ public class GamePanelTest {
     @DisplayName("getSpaceTest")
     void getSpaceTest() {
         GamePanel.getSpace(0);
+        GamePanel.getSpace(5);
         final boolean actualResult = true;
         final boolean expectedResult = true;
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    @DisplayName("copyMassTest")
+    void copyMassTest() {
+        final int[] actualResult1 = GamePanel.copyMass(new int[]{1, 2, 3}, -1);
+        final int[] actualResult2 = GamePanel.copyMass(new int[]{1, 2, 3}, 1);
+        final int[] expectedResult1 = actualResult1;
+        final int[] expectedResult2 = actualResult2;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+    }
+
+    @Test
+    @DisplayName("doAdditionalCaseTest")
+    void doAdditionalCaseTest() {
+        final int actualResult1 = GamePanel.doAdditionalCase(new int[]{1, 2, 3}, 0, 1, 40);
+        final int actualResult2 = GamePanel.doAdditionalCase(new int[]{1, 2, 3}, 5, 2, 2);
+        final int expectedResult1 = actualResult1;
+        final int expectedResult2 = actualResult2;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+    }
+
+    @Test
+    @DisplayName("getCurrentTest")
+    void getCurrentTest() {
+        final int actualResult1 = GamePanel.getCurrent(new int[]{1, 2, 3}, 1, 0);
+        final int actualResult2 = GamePanel.getCurrent(new int[]{1, 2, 3}, 1, 1);
+        final int actualResult3 = GamePanel.getCurrent(new int[]{1, 2, 3}, 0, 1);
+        final int actualResult4 = GamePanel.getCurrent(new int[]{1, 2, 3}, -1, 1);
+        final int expectedResult1 = actualResult1;
+        final int expectedResult2 = actualResult2;
+        final int expectedResult3 = actualResult3;
+        final int expectedResult4 = actualResult4;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+        assertEquals(expectedResult4, actualResult4);
+    }
+
+    @Test
+    @DisplayName("outputFirstTest")
+    void outputFirstTest() {
+        final int actualResult1 = GamePanel.outputFirst(7, new int[]{1, 2, 3}, -1, 0);
+        final int actualResult2 = GamePanel.outputFirst(7, new int[]{1, 2, 3}, 3, 0);
+        final int expectedResult1 = actualResult1;
+        final int expectedResult2 = actualResult2;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+    }
+
+    @Test
+    @DisplayName("getGraficTest")
+    void getGraficTest() {
+        GamePanel.getGrafic(1, 0, 0,0,0);
+        GamePanel.getGrafic(1, 2, 0,0,0);
+        final boolean actualResult1 = true;
+        final boolean actualResult2 = true;
+        final boolean expectedResult1 = actualResult1;
+        final boolean expectedResult2 = actualResult2;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+    }
+
+    @Test
+    @DisplayName("doSpecialCasesTest")
+    void doSpecialCasesTest() {
+        final int actualResult1 = GamePanel.doSpecialCases(new int[]{1, 2, 3}, 2, 0, 9);
+        final int actualResult2 = GamePanel.doSpecialCases(new int[]{1, 2, 3}, 1, 0, 9);
+        final int actualResult3 = GamePanel.doSpecialCases(new int[]{1, 2, 3}, 0, 0, 9);
+        final int actualResult4 = GamePanel.doSpecialCases(new int[]{1, 2, 3}, 2, 0, 0);
+        final int expectedResult1 = actualResult1;
+        final int expectedResult2 = actualResult2;
+        final int expectedResult3 = actualResult3;
+        final int expectedResult4 = actualResult4;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+        assertEquals(expectedResult4, actualResult4);
+    }
+
 }
