@@ -9,7 +9,7 @@ public class GamePanel {
     public static void outputTask() {
         System.out.println("Программа позволяет ввести два натуральных числа m и n (m>n)\n" +
                 "казывает на экране правило деления «лесенкой» числа m на число n.");
-                System.out.println("Введите число 1: ");
+        System.out.println("Введите число 1: ");
     }
 
     public static int checkNumber() {
