@@ -3,9 +3,6 @@ package breakout;
 import java.util.Scanner;
 
 public class GamePanel {
-    final static int numberColumns = 3;
-    final static int numberLines = 3;
-    public static Scanner in;
     public static void outputTask() {
         System.out.println("Программа позволяет ввести два натуральных числа m и n (m>n)\n" +
                 "казывает на экране правило деления «лесенкой» числа m на число n.");
@@ -238,56 +235,41 @@ public class GamePanel {
         System.out.println(ost);
     }
 
-    public static void main(String[] args) {
-        outputTask();
-        int firstNumber = checkNumber();
-        int secondNumber = checkNumberSecondNumber(firstNumber);
-        System.out.print( " " + firstNumber);
-        System.out.println( "|" + secondNumber);
-        String stringFirstNumber = Integer.toString(firstNumber);
-        int lengthFirstNumber = stringFirstNumber.length();
-        int[] mass;
-        mass = getMass(firstNumber, lengthFirstNumber);
-        getResult(mass, secondNumber, lengthFirstNumber);
-        in.close();
-    }
-
-    public static double[] getAverageScore(byte[][] matrix){
-        double[] grade = new double[numberColumns];
-        int sum = 0;
-        for (short i = 0; i < numberColumns; i++)
+    public static double[] getAverageScore(int number){
+        double[] grade = new double[number];
+        int sum = 3;
+        for (short i = 0; i < number; i++)
         {
-            for (short j = 0; j < numberLines; j++)
+            for (short j = 0; j < number; j++)
             {
-                sum = sum + matrix[j][i];
+                grade[j] = 0;
             }
             grade[i] = 0;
-            grade[i] = ((double) sum / (numberLines));
-            sum = 0;
+            grade[i] = ((double) sum / (number));
+            sum++;
         }
         return grade;
     }
 
-    static boolean checkFirstElem(char[] ch) {
-        boolean isCorrect = ch[0] >= 'A' && ch[0] <= 'Z' || ch[0] == '_';
-        return isCorrect;
+    public static boolean checkFirstElem(char[] ch) {
+        return ch[0] >= 'A' && ch[0] <= 'Z' || ch[0] == '_';
     }
 
-    static boolean checkRestElem(char[] ch, boolean isCorrect, int n) {
-        for(int i = 1; isCorrect && i < n; ++i) {
+    public static boolean checkRestElem(char[] ch, boolean isCorrect, int n) {
+        for(int i = 0; isCorrect && i < n; ++i) {
             isCorrect = ch[i] >= 'A' && ch[i] <= 'Z' || ch[i] == '_' || ch[i] >= '0' && ch[i] <= '9';
         }
 
         return isCorrect;
     }
 
-    static boolean checkElem(char[] ch, int n) {
+    public static boolean checkElem(char[] ch, int n) {
         boolean isCorrect = checkFirstElem(ch);
         isCorrect = checkRestElem(ch, isCorrect, n);
         return isCorrect;
     }
 
-    static char[] isStringToChar(String str) {
+    public static char[] isStringToChar(String str) {
         char[] ch = new char[str.length()];
 
         for(int i = 0; i < str.length(); ++i) {
@@ -308,19 +290,31 @@ public class GamePanel {
     }
 
     public static int[][] orderMatrix(int[][] matrix, int number, String path) {
-        for(int i = 0; i < matrix[0].length - 1; ++i) {
+        for(int i = 0; i < number; ++i) {
             int x = i;
 
-            for(int j = i + 1; j < matrix[0].length; ++j) {
-                if (matrix[0][j] < matrix[0][x]) {
+            for(int j = i + 1; j < number; ++j) {
+                if (number == 3) {
                     x = j;
                 }
             }
 
             sortRow(matrix, i, x);
-            //outputMatrix(matrix, number, path);
         }
 
         return matrix;
     }
+
+    /*public static void main(String[] args) {
+        outputTask();
+        int firstNumber = checkNumber();
+        int secondNumber = checkNumberSecondNumber(firstNumber);
+        System.out.print( " " + firstNumber);
+        System.out.println( "|" + secondNumber);
+        String stringFirstNumber = Integer.toString(firstNumber);
+        int lengthFirstNumber = stringFirstNumber.length();
+        int[] mass;
+        mass = getMass(firstNumber, lengthFirstNumber);
+        getResult(mass, secondNumber, lengthFirstNumber);
+    }*/
 }
