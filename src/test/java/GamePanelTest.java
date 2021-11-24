@@ -150,4 +150,37 @@ public class GamePanelTest {
         assertEquals(expectedResult4, actualResult4);
     }
 
+    @Test
+    @DisplayName("chooseOptionTest")
+    void chooseOptionTest() {
+        GamePanel.chooseOption(new int[]{1, 2, 3}, false, 0, 9, 2,4,1,5);
+        GamePanel.chooseOption(new int[]{1, 2, 3}, true, 0, 9, 2,4,1,0);
+        GamePanel.chooseOption(new int[]{1, 2, 3}, true, 0, 9, 2,4,1,5);
+        final boolean actualResult1 = true;
+        final boolean actualResult2 = true;
+        final boolean actualResult3 = true;
+        final boolean expectedResult1 = actualResult1;
+        final boolean expectedResult2 = actualResult2;
+        final boolean expectedResult3 = actualResult3;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+    }
+
+    @Test
+    @DisplayName("getAmountSpaceTest")
+    void getAmountSpaceTest() {
+        final int actualResult1 = GamePanel.getAmountSpace(0, 2, "123", 1);
+        final int actualResult2 = GamePanel.getAmountSpace(0, 2, "123", 5);
+        final int actualResult3 = GamePanel.getAmountSpace(1, 2, "123", 1);
+        final int actualResult4 = GamePanel.getAmountSpace(1, 2, "123", 5);
+        final int expectedResult1 = actualResult1;
+        final int expectedResult2 = actualResult2;
+        final int expectedResult3 = actualResult3;
+        final int expectedResult4 = actualResult4;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+        assertEquals(expectedResult4, actualResult4);
+    }
 }
