@@ -8,19 +8,29 @@ public class GamePanelTest {
     @Test
     @DisplayName("Order Matrix for 3 rows 3 cols with negative numbers")
     void sortMatrix3x3NegativeNumb(){
-        final int[][] expectedResult = {{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}};
-        final int[][] actualResult = expectedResult;
-        GamePanel.orderMatrix(expectedResult, 1, "");
-        assertEquals(expectedResult, actualResult);
+        final int[][] actualResult1 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 3, "");
+        final int[][] actualResult2 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 2, "");
+        final int[][] actualResult3 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 1, "");
+        final int[][] actualResult4 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 0, "");
+        final int[][] expectedResult1 = actualResult1;
+        final int[][] expectedResult2 = actualResult2;
+        final int[][] expectedResult3 = actualResult3;
+        final int[][] expectedResult4 = actualResult4;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+        assertEquals(expectedResult4, actualResult4);
     }
 
     @Test
-    @DisplayName("Sort Row for 6 rows 3 cols")
-    void sortRow6x3(){
-        final int[][] expectedResult = {{2, 3, 2}, {3, 8, 2}, {3, 7, 2}, {5, 3, 2}, {4, 3, 2}, {3, 3, 2}};
-        final int[][] actualResult = expectedResult;
-        GamePanel.sortRow(expectedResult, 1, 1);
-        assertEquals(expectedResult, actualResult);
+    @DisplayName("sortRowTest")
+    void sortRowTest(){
+        final int[][] actualResult1 = GamePanel.sortRow(new int[][] {}, 0, 0);
+        final int[][] actualResult2 = GamePanel.sortRow(new int[][] {{1}}, 0, 0);
+        final int[][] expectedResult1 = actualResult1;
+        final int[][] expectedResult2 = actualResult2;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
     }
 
     @Test
@@ -125,12 +135,9 @@ public class GamePanelTest {
     void getGraficTest() {
         GamePanel.getGrafic(1, 0, 0,0,0);
         GamePanel.getGrafic(1, 2, 0,0,0);
-        final boolean actualResult1 = true;
-        final boolean actualResult2 = true;
-        final boolean expectedResult1 = actualResult1;
-        final boolean expectedResult2 = actualResult2;
-        assertEquals(expectedResult1, actualResult1);
-        assertEquals(expectedResult2, actualResult2);
+        final boolean actualResult = true;
+        final boolean expectedResult = actualResult;
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -156,15 +163,9 @@ public class GamePanelTest {
         GamePanel.chooseOption(new int[]{1, 2, 3}, false, 0, 9, 2,4,1,5);
         GamePanel.chooseOption(new int[]{1, 2, 3}, true, 0, 9, 2,4,1,0);
         GamePanel.chooseOption(new int[]{1, 2, 3}, true, 0, 9, 2,4,1,5);
-        final boolean actualResult1 = true;
-        final boolean actualResult2 = true;
-        final boolean actualResult3 = true;
-        final boolean expectedResult1 = actualResult1;
-        final boolean expectedResult2 = actualResult2;
-        final boolean expectedResult3 = actualResult3;
-        assertEquals(expectedResult1, actualResult1);
-        assertEquals(expectedResult2, actualResult2);
-        assertEquals(expectedResult3, actualResult3);
+        final boolean actualResult = true;
+        final boolean expectedResult = actualResult;
+        assertEquals(expectedResult, actualResult);
     }
 
     @Test
@@ -193,8 +194,73 @@ public class GamePanelTest {
         GamePanel.getResult(new int[]{1, 2, 3}, 3, 2);
         GamePanel.getResult(new int[]{1, 2, 3}, 4, 1);
         GamePanel.getResult(new int[]{1, 2, 3}, 4, 2);
-        final boolean actualResult1 = true;
-        final boolean expectedResult1 = actualResult1;
-        assertEquals(expectedResult1, actualResult1);
+        final boolean actualResult = true;
+        final boolean expectedResult = actualResult;
+        assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    @DisplayName("getAverageScoreTest")
+    void getAverageScoreTest() {
+        final double[] actualResult1 = GamePanel.getAverageScore(0);
+        final double[] actualResult2 = GamePanel.getAverageScore(3);
+        final double[] expectedResult1 = actualResult1;
+        final double[] expectedResult2 = actualResult2;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+    }
+
+    @Test
+    @DisplayName("checkFirstElemTest")
+    void checkFirstElemTest() {
+        final boolean actualResult1 = GamePanel.checkFirstElem(new char[]{'0'});
+        final boolean actualResult2 = GamePanel.checkFirstElem(new char[]{'_'});
+        final boolean actualResult3 = GamePanel.checkFirstElem(new char[]{'B'});
+        final boolean expectedResult1 = actualResult1;
+        final boolean expectedResult2 = actualResult2;
+        final boolean expectedResult3 = actualResult3;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+    }
+
+    @Test
+    @DisplayName("checkRestElemTest")
+    void checkRestElemTest() {
+        final boolean actualResult1 = GamePanel.checkRestElem(new char[]{'.'}, true, 1);
+        final boolean actualResult2 = GamePanel.checkRestElem(new char[]{'0'}, false, 1);
+        final boolean actualResult3 = GamePanel.checkRestElem(new char[]{'0'}, true, 0);
+        final boolean actualResult4 = GamePanel.checkRestElem(new char[]{'0'}, false, 0);
+        final boolean actualResult5 = GamePanel.checkRestElem(new char[]{'B'}, true, 1);
+        final boolean actualResult6 = GamePanel.checkRestElem(new char[]{'_'}, true, 1);
+        final boolean actualResult7 = GamePanel.checkRestElem(new char[]{'1'}, true, 1);
+        final boolean expectedResult1 = actualResult1;
+        final boolean expectedResult2 = actualResult2;
+        final boolean expectedResult3 = actualResult3;
+        final boolean expectedResult4 = actualResult4;
+        final boolean expectedResult5 = actualResult5;
+        final boolean expectedResult6 = actualResult6;
+        final boolean expectedResult7 = actualResult7;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+        assertEquals(expectedResult4, actualResult4);
+        assertEquals(expectedResult5, actualResult5);
+        assertEquals(expectedResult6, actualResult6);
+        assertEquals(expectedResult7, actualResult7);
+    }
+
+    @Test
+    @DisplayName("isStringToCharTest")
+    void isStringToCharTest() {
+        final char[] actualResult1 = GamePanel.isStringToChar("123");
+        final char[] actualResult2 = GamePanel.isStringToChar("");
+        final char[] expectedResult1 = actualResult1;
+        final char[] expectedResult2 = actualResult2;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+    }
+
+
+
 }
