@@ -8,10 +8,10 @@ public class GamePanelTest {
     @Test
     @DisplayName("Order Matrix for 3 rows 3 cols with negative numbers")
     void sortMatrix3x3NegativeNumb(){
-        final int[][] actualResult1 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 3, "");
-        final int[][] actualResult2 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 2, "");
-        final int[][] actualResult3 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 1, "");
-        final int[][] actualResult4 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 0, "");
+        final int[][] actualResult1 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 3);
+        final int[][] actualResult2 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 2);
+        final int[][] actualResult3 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 1);
+        final int[][] actualResult4 = GamePanel.orderMatrix(new int[][]{{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}}, 0);
         final int[][] expectedResult1 = actualResult1;
         final int[][] expectedResult2 = actualResult2;
         final int[][] expectedResult3 = actualResult3;
@@ -122,8 +122,8 @@ public class GamePanelTest {
     @Test
     @DisplayName("outputFirstTest")
     void outputFirstTest() {
-        final int actualResult1 = GamePanel.outputFirst(7, new int[]{1, 2, 3}, -1, 0);
-        final int actualResult2 = GamePanel.outputFirst(7, new int[]{1, 2, 3}, 3, 0);
+        final int actualResult1 = GamePanel.outputFirst(7, -1, 0);
+        final int actualResult2 = GamePanel.outputFirst(7, 3, 0);
         final int expectedResult1 = actualResult1;
         final int expectedResult2 = actualResult2;
         assertEquals(expectedResult1, actualResult1);
@@ -133,8 +133,8 @@ public class GamePanelTest {
     @Test
     @DisplayName("getGraficTest")
     void getGraficTest() {
-        GamePanel.getGrafic(1, 0, 0,0,0);
-        GamePanel.getGrafic(1, 2, 0,0,0);
+        GamePanel.getGrafic(1, 0);
+        GamePanel.getGrafic(1, 2);
         final boolean actualResult = true;
         final boolean expectedResult = actualResult;
         assertEquals(expectedResult, actualResult);
@@ -160,9 +160,9 @@ public class GamePanelTest {
     @Test
     @DisplayName("chooseOptionTest")
     void chooseOptionTest() {
-        GamePanel.chooseOption(new int[]{1, 2, 3}, false, 0, 9, 2,4,1,5);
-        GamePanel.chooseOption(new int[]{1, 2, 3}, true, 0, 9, 2,4,1,0);
-        GamePanel.chooseOption(new int[]{1, 2, 3}, true, 0, 9, 2,4,1,5);
+        GamePanel.chooseOption(new int[]{1, 2, 3}, false, 2,4,5);
+        GamePanel.chooseOption(new int[]{1, 2, 3}, true, 2,4,0);
+        GamePanel.chooseOption(new int[]{1, 2, 3}, true, 2,4,5);
         final boolean actualResult = true;
         final boolean expectedResult = actualResult;
         assertEquals(expectedResult, actualResult);

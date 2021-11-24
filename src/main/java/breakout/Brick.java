@@ -10,7 +10,8 @@ import java.awt.Graphics;
 
 public class Brick {
 
-    int brickXPos, brickYPos;
+    int brickXPos;
+    int brickYPos;
 
     /**
      * This is int field with brick width data.
