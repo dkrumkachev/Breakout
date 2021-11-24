@@ -1,4 +1,4 @@
-package main.java.breakout;
+package breakout;
 
 import java.awt.Color;
 import java.awt.Graphics;

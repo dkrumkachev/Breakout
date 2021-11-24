@@ -1,13 +1,10 @@
-package test.java;
-
-
-import main.java.breakout.BreakOut;
+import breakout.BreakOut;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
-import static main.java.breakout.BreakOut.*;
+import static breakout.BreakOut.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BreakOutTest{
