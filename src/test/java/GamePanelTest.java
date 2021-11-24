@@ -10,6 +10,7 @@ public class GamePanelTest {
     void sortMatrix3x3NegativeNumb(){
         final int[][] expectedResult = {{0, 2, 3}, {-1, 2, 3}, {-9, 2, 3}};
         final int[][] actualResult = expectedResult;
+        GamePanel.orderMatrix(expectedResult, 1, "");
         assertEquals(expectedResult, actualResult);
     }
 
@@ -19,6 +20,7 @@ public class GamePanelTest {
     void sortRow6x3(){
         final int[][] expectedResult = {{2, 3, 2}, {3, 8, 2}, {3, 7, 2}, {5, 3, 2}, {4, 3, 2}, {3, 3, 2}};
         final int[][] actualResult = expectedResult;
+        GamePanel.sortRow(expectedResult, 1, 1);
         assertEquals(expectedResult, actualResult);
     }
 
