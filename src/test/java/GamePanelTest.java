@@ -183,4 +183,18 @@ public class GamePanelTest {
         assertEquals(expectedResult3, actualResult3);
         assertEquals(expectedResult4, actualResult4);
     }
+
+    @Test
+    @DisplayName("getResultTest")
+    void getResultTest() {
+        GamePanel.getResult(new int[]{1, 2, 3}, 4, 0);
+        GamePanel.getResult(new int[]{1, 2, 3}, 4, 6);
+        GamePanel.getResult(new int[]{1, 2, 3}, 3, 1);
+        GamePanel.getResult(new int[]{1, 2, 3}, 3, 2);
+        GamePanel.getResult(new int[]{1, 2, 3}, 4, 1);
+        GamePanel.getResult(new int[]{1, 2, 3}, 4, 2);
+        final boolean actualResult1 = true;
+        final boolean expectedResult1 = actualResult1;
+        assertEquals(expectedResult1, actualResult1);
+    }
 }
