@@ -62,26 +62,29 @@ public class GamePanel {
     }
 
     public static int[] copyMass(int[] massCopy,int n) {
-        int[] mass = new int[n + 1];
-        int i = n - 1;
+        int[] mass = new int[10];
+        int i = n;
         while (i > -1)
         {
-            mass[i + 1] = massCopy[i];
+            mass[i] = massCopy[i];
             i = i - 1;
         }
         return mass;
     }
 
     public static int doAdditionalCase(int[] mass, int current, int i, int secondNumber) {
-        boolean isCorrect = false;
+        boolean isCorrect = true;
         while (isCorrect)
         {
-            if ((mass[i] * 10 + mass[i - 1]) < secondNumber)
+            if ((mass[i] * 10 + mass[i]) < secondNumber)
             {
-                mass[i - 1] = mass[i] * 10 + mass[i - 1];
-                i = i - 1;
-                if (i == 0) isCorrect = true;
+                mass[i] = mass[i] * 10 + mass[i];
             }
+            i = i - 1;
+            if (i == 0) {
+                isCorrect = false;
+            }
+
         }
         current = current * 10;
         return current;
@@ -96,17 +99,17 @@ public class GamePanel {
         int res;
         while(i > 0)
         {
-            if (((mass[i] + ost * 10) < secondNumber) && ((mass[i] + ost * 10) != 0))
+            if (secondNumber > 0)
             {
-                ost = ost * 100;
+                ost = ost + 100;
                 mass[i - 1] = mass[i] * 10 + mass[i - 1] + ost;
                 i = i - 1;
                 ost = 0;
-                current = doAdditionalCase(mass, current, i, secondNumber);
+                current = 5;
             }
-            else if ((mass[i] + ost * 10) == 0)
+            else if (secondNumber == 0)
             {
-                current = current * 10;
+                current = current + 10;
                 i = i - 1;
             }
             else
@@ -124,12 +127,11 @@ public class GamePanel {
         int firstcurrent = (current * secondNumber);
         String string = Integer.toString(firstcurrent);
         int lengthNumb = string.length();
-        System.out.print("-") ;
-        current = getCurrent(a, secondNumber, lengthFirstNumber);
-        string = Integer.toString(current);
+        System.out.print(a.length) ;
+        current = secondNumber;
         getSpace(lengthFirstNumber);
         System.out.print(" |");
-        for(int j = 0; j < (string.length()); j++)
+        for(int j = 0; j < (current); j++)
             System.out.print("-");
         System.out.println();
         System.out.print(" " + firstcurrent);
@@ -150,19 +152,19 @@ public class GamePanel {
     }
 
     public static int doSpecialCases(int[] mass, int i, int ost, int secondNumber) {
-        boolean isCorrect = false;
+        boolean isCorrect = true;
         if (i == 0)
-            ost = mass[1] + (ost / 10);
+            ost = ost + 10;
         else
             ost = 0;
         while (isCorrect){
-            if ((mass[i]*10 + mass[i - 1])< secondNumber){
-                mass[i - 1] = mass[i] * 10 + mass[i - 1];
-                i = i - 1;
-                if (i == 0) {
-                    ost = mass[1];
-                    isCorrect = true;
-                }
+            if (secondNumber > 0){
+                ost = 5;
+            }
+            i = i - 1;
+            if (i == 0) {
+                ost = mass[1];
+                isCorrect = false;
             }
         }
         return ost;
