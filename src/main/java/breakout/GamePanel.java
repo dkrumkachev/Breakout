@@ -64,14 +64,14 @@ public class GamePanel extends JPanel {
         //ball
 
         int balldia = 30;
-        int ballxpos = (batxpos + (int) (batwidth / 2) - (balldia / 2)), ballypos = batypos - balldia - 3;
+        int ballxpos = (batxpos + (batwidth / 2) - (balldia / 2)), ballypos = batypos - balldia - 3;
         int ballxvel = 0, ballyvel = 0;
 
 
         //bricks
         int rows = 5, cols = 10;
-        Brick b[][] = new Brick[rows][cols];
-        int brickvalue[][] = new int[rows][cols];
+        Brick[][] b = new Brick[rows][cols];
+        int[][] brickvalue = new int[rows][cols];
         int bricksleft = rows * cols;
 
         //game variables
@@ -133,20 +133,11 @@ public class GamePanel extends JPanel {
                 for (int j = 0; j < cols; j++) {
                     if (brickvalue[i][j] == 1) {
                         switch (i) {
-                            case 0:
-                                g.setColor(Color.red);
-                                break;
-                            case 1:
-                                g.setColor(Color.orange);
-                                break;
-                            case 2:
-                                g.setColor(Color.yellow);
-                                break;
-                            case 3:
-                                g.setColor(Color.green);
-                                break;
-                            case 4:
-                                g.setColor(Color.blue);
+                            case 0 -> g.setColor(Color.red);
+                            case 1 -> g.setColor(Color.orange);
+                            case 2 -> g.setColor(Color.yellow);
+                            case 3 -> g.setColor(Color.green);
+                            case 4 -> g.setColor(Color.blue);
                         }
                         b[i][j].drawBrick(g);
                     }
@@ -190,7 +181,7 @@ public class GamePanel extends JPanel {
                 } else {
                     batxpos = 550;
                     batypos = 550;
-                    ballxpos = (batxpos + (int) (batwidth / 2) - (balldia / 2));
+                    ballxpos = (batxpos + (batwidth / 2) - (balldia / 2));
                     ballypos = batypos - balldia - 3;
                     ballxvel = 0;
                     ballyvel = 0;
@@ -442,7 +433,7 @@ public class GamePanel extends JPanel {
                 batypos = 550;
 
 
-                ballxpos = (batxpos + (int) (batwidth / 2) - (balldia / 2));
+                ballxpos = (batxpos + (batwidth / 2) - (balldia / 2));
                 ballypos = batypos - balldia - 3;
                 ballxvel = 0;
                 ballyvel = 0;
@@ -524,7 +515,85 @@ public class GamePanel extends JPanel {
         return matrix;
     }
 
-    public static int[][] orderMatrix(int[][] matrix, int number, String path) {
+    public static int[][] orderMatrix(int[][] matrix) {
+        for(int i = 0; i < matrix[0].length - 1; ++i) {
+            int x = i;
+
+            for(int j = i + 1; j < matrix[0].length; ++j) {
+                if (matrix[0][j] < matrix[0][x]) {
+                    x = j;
+                }
+            }
+
+            sortRow(matrix, i, x);
+        }
+
+        return matrix;
+    }
+
+    public static int[][] sortLine(int[][] matrix, int i, int x) {
+        for(int k = 0; k < matrix.length; ++k) {
+            int buf = matrix[k][i];
+            matrix[k][i] = matrix[k][x];
+            matrix[k][x] = buf;
+        }
+
+        return matrix;
+    }
+
+    public static int[][] orderMatrixBrick(int[][] matrix) {
+        for(int i = 0; i < matrix[0].length - 1; ++i) {
+            int x = i;
+
+            for(int j = i + 1; j < matrix[0].length; ++j) {
+                if (matrix[0][j] < matrix[0][x]) {
+                    x = j;
+                }
+            }
+
+            sortRow(matrix, i, x);
+        }
+
+        return matrix;
+    }
+
+    public static int[][] sortMatrixRow(int[][] matrix, int i, int x) {
+        for(int k = 0; k < matrix.length; ++k) {
+            int buf = matrix[k][i];
+            matrix[k][i] = matrix[k][x];
+            matrix[k][x] = buf;
+        }
+
+        return matrix;
+    }
+
+    public static int[][] orderMatrixCol(int[][] matrix) {
+        for(int i = 0; i < matrix[0].length - 1; ++i) {
+            int x = i;
+
+            for(int j = i + 1; j < matrix[0].length; ++j) {
+                if (matrix[0][j] < matrix[0][x]) {
+                    x = j;
+                }
+            }
+
+            sortRow(matrix, i, x);
+        }
+
+        return matrix;
+    }
+
+    public static int[][] sortRow12(int[][] matrix, int i, int x) {
+        for(int k = 0; k < matrix.length; ++k) {
+            int buf = matrix[k][i];
+            matrix[k][i] = matrix[k][x];
+            matrix[k][x] = buf;
+        }
+
+        return matrix;
+    }
+
+    public static int[][] orderMatrixLine1771(int[][] matrix) {
         for(int i = 0; i < matrix[0].length - 1; ++i) {
             int x = i;
 
