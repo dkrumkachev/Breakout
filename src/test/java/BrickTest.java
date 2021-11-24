@@ -1,6 +1,4 @@
-package test.java;
-
-import main.java.breakout.Brick;
+import breakout.Brick;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.awt.*;
