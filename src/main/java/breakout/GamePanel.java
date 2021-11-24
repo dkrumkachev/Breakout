@@ -8,6 +8,11 @@ import java.awt.event.KeyListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * This is the class of game process.
+ * @author Dmitry Krumkachyov.
+ *  */
+
 public class GamePanel extends JPanel {
     int width = 1220;
     ScoreBoard s;
@@ -23,9 +28,23 @@ public class GamePanel extends JPanel {
 
     }
 
+    /**
+     * This class includes lives and score and its their showing.
+     * @author Dmitry Krumkachyov.
+     *  */
 
     public class ScoreBoard extends JPanel {
+
+        /**
+         * These values store count of points.
+         *  */
+
         int score = 0;
+
+        /**
+         * These values store count of lives.
+         *  */
+
         int life = 4;
 
         public ScoreBoard() {
@@ -49,6 +68,12 @@ public class GamePanel extends JPanel {
             repaint();
         }
     }
+
+
+    /**
+     * This class implements and shows game process.
+     * @author Daria Zavalyuk.
+     *  */
 
     public class MainPanel extends JPanel implements ActionListener, KeyListener {
 
@@ -81,6 +106,11 @@ public class GamePanel extends JPanel {
 
         boolean batcollide = false;
 
+
+        /**
+         * This class implements and shows game process.
+         * @author Daria Zavalyuk.
+         *  */
 
         public MainPanel() {
             this.setPreferredSize(new Dimension(width, height));
@@ -128,6 +158,11 @@ public class GamePanel extends JPanel {
 
         }
 
+        /**
+         * This method create all bricks.
+         * @author Daria Zavalyuk.
+         *  */
+
         public void drawBrickMap(Graphics g) {
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
@@ -153,6 +188,11 @@ public class GamePanel extends JPanel {
                 }
             }
         }
+
+        /**
+         * This method which starts project running.
+         * @author Alexandr Ravodin.
+         *  */
 
         @Override
         public void actionPerformed(ActionEvent arg0) {
@@ -241,6 +281,12 @@ public class GamePanel extends JPanel {
 
 
             A:
+
+            /**
+             * This cycle describes collidings.
+             * @author Dmitry Krumkachyov.
+             *  */
+
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < cols; j++) {
                     if (brickvalue[i][j] == 1) {
@@ -364,8 +410,22 @@ public class GamePanel extends JPanel {
             }
         }
 
+        /**
+         * This method gives points for each broken brick.
+         * @author Alexandr Ravodin.
+         * @param i row.
+         * @param j column.
+         *  */
+
         void update(int i, int j) {
             brickvalue[i][j] = 0;
+
+
+            /**
+             * Changing score.
+             * @link ScoreBoard.
+             *  */
+
             if (i == 4) s.score += 1;
             if (i == 3) s.score += 3;
             if (i == 2) s.score += 5;
@@ -373,6 +433,12 @@ public class GamePanel extends JPanel {
             if (i == 0) s.score += 9;
             bricksleft--;
         }
+
+        /**
+         * This method sets up game depends on pressed key.
+         * @author Alexandr Ravodin.
+         * @param e pressing key.
+         *  */
 
         @Override
         public void keyPressed(KeyEvent e) {
@@ -469,6 +535,12 @@ public class GamePanel extends JPanel {
         public void keyTyped(KeyEvent arg0) {
         }
 
+
+        /**
+         * This method prints "GAME OVER" and shows the score in case of losing.
+         * @author Daria Zavalyuk.
+         *  */
+
         void showGameOver(Graphics g) {
 
             g.setColor(Color.orange);
@@ -479,6 +551,11 @@ public class GamePanel extends JPanel {
             g.drawString("SCORE : " + s.score, width / 2 - 150, height / 2 + 60);
 
         }
+
+        /**
+         * This method prints "You Have Cleared The Game." and shows the score in case of winning.
+         * @author Daria Zavalyuk.
+         *  */
 
         void win(Graphics g) {
 
@@ -491,12 +568,22 @@ public class GamePanel extends JPanel {
 
         }
 
+        /**
+         * This method prints "Press [ESC] to exit the game" and "Press [R] to restart the game".
+         * @author Daria Zavalyuk.
+         *  */
+
         public void drawOptions(Graphics g) {
             g.setColor(Color.BLACK);
             g.setFont(new Font("Times new roman", Font.ITALIC, 42));
             g.drawString("Press [ESC] to exit the game", width / 2 - 260, height / 2 + 120);
             g.drawString("Press [R] to restart the game", width / 2 - 260, height / 2 + 170);
         }
+
+        /**
+         * This method prints "Press [Space] to start the game".
+         * @author Daria Zavalyuk.
+         *  */
 
         public void drawStartGame(Graphics g) {
             g.setColor(Color.black);
