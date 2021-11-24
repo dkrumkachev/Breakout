@@ -50,6 +50,22 @@ public class GamePanelTest {
         final int expectedResult2 = GamePanel.checkNumberSecondNumber(0);
         final int actualResult2 = 3;
         assertEquals(expectedResult2, actualResult2);
+    }
 
+    @Test
+    @DisplayName("getMassTest")
+    void getMassTest() {
+        final int[] actualResult = GamePanel.getMass(1,5);
+        final int[] expectedResult = actualResult;
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    @DisplayName("getSpaceTest")
+    void getSpaceTest() {
+        GamePanel.getSpace(0);
+        final boolean actualResult = true;
+        final boolean expectedResult = true;
+        assertEquals(expectedResult, actualResult);
     }
 }
