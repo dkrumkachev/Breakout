@@ -12,10 +12,28 @@ public class Brick {
 
     int brickXPos, brickYPos;
 
-    int brickWidth = 80; 
+    /**
+     * This is int field with brick width data.
+     *  */
+
+    int brickWidth = 80;
+
+    /**
+     * This is int field with brick height data.
+     *  */
+
     int brickHeight = 40;
 
+    /**
+     * This is int field with horizontal offset.
+     *  */
+
     int xOffset = 150;
+
+    /**
+     * This is int field with vertical offset.
+     *  */
+
     int yOffset = 50;
 
     int xGap = 10;
