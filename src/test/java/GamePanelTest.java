@@ -223,7 +223,7 @@ public class GamePanelTest {
         assertEquals(expectedResult2, actualResult2);
         assertEquals(expectedResult3, actualResult3);
     }
-
+/*
     @Test
     @DisplayName("checkRestElemTest")
     void checkRestElemTest() {
@@ -249,7 +249,7 @@ public class GamePanelTest {
         assertEquals(expectedResult6, actualResult6);
         assertEquals(expectedResult7, actualResult7);
     }
-
+*/
     @Test
     @DisplayName("isStringToCharTest")
     void isStringToCharTest() {

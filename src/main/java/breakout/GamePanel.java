@@ -244,7 +244,6 @@ public class GamePanel {
             {
                 grade[j] = 0;
             }
-            grade[i] = 0;
             grade[i] = ((double) sum / (number));
             sum++;
         }
