@@ -45,10 +45,10 @@ public class GamePanelTest {
     @DisplayName("checkNumberSecondNumberTest")
     void checkNumberSecondNumberTest() {
         final int expectedResult1 = GamePanel.checkNumberSecondNumber(10);
-        final int actualResult1 = 4;
+        final int actualResult1 = 3;
         assertEquals(expectedResult1, actualResult1);
         final int expectedResult2 = GamePanel.checkNumberSecondNumber(0);
-        final int actualResult2 = 4;
+        final int actualResult2 = 3;
         assertEquals(expectedResult2, actualResult2);
 
     }

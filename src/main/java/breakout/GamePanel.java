@@ -14,7 +14,7 @@ public class GamePanel {
 
     public static int checkNumber() {
         boolean isInCorrect;
-        int number = 4;
+        int number = 3;
         do {
             isInCorrect = false;
             try {
