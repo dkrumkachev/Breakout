@@ -104,7 +104,48 @@ public class GamePanel {
         }
         return mass;
     }
+    public static int doAdditionalCase(int[] mass, int current, int i, int secondNumber) {
+        boolean isCorrect = true;
+        while (isCorrect) {
+            if ((mass[i] * 10 + mass[i]) < secondNumber) {
+                mass[i] = mass[i] * 10 + mass[i];
+            }
+            i = i - 1;
+            if (i == 0) {
+                isCorrect = false;
+            }
 
+        }
+        current = current * 10;
+        return current;
+    }
+
+    public static int getCurrent(int[] massCopy, int secondNumber, int lengthFirstNumber) {
+        int[] mass;
+        mass = copyMass(massCopy, lengthFirstNumber);
+        int i = lengthFirstNumber;
+        int current = 0;
+        int ost = 0;
+        int res;
+        while (i > 0) {
+            if (secondNumber > 0) {
+                ost = ost + 100;
+                mass[i - 1] = mass[i] * 10 + mass[i - 1] + ost;
+                i = i - 1;
+                ost = 0;
+                current = 5;
+            } else if (secondNumber == 0) {
+                current = current + 10;
+                i = i - 1;
+            } else {
+                res = mass[i] + ost * 10;
+                ost = res % secondNumber;
+                current = (res / secondNumber) + current * 10;
+                i = i - 1;
+            }
+        }
+        return current;
+    }
 
     public static int outputFirst(int current, int secondNumber, int lengthFirstNumber) {
         int firstcurrent = (current * secondNumber);
