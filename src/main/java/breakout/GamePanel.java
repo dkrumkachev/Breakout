@@ -76,15 +76,6 @@ public class GamePanel {
         return secondNumber;
     }
 
-    public static int[] getMass(int firstNumber, int lengthFirstNumber) {
-        int number = firstNumber;
-        int[] mass = new int[lengthFirstNumber];
-        for (int i = 0; i < lengthFirstNumber; i++) {
-            mass[i] = (number % 10);
-            number = (number / 10);
-        }
-        return mass;
-    }
 
     public static void getSpace(int offSet) {
         int n = 0;
