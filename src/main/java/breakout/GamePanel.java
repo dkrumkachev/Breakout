@@ -257,7 +257,23 @@ public class GamePanel {
         return grade;
     }
 
+    public static boolean checkFirstElem(char[] ch) {
+        return ch[0] >= 'A' && ch[0] <= 'Z' || ch[0] == '_';
+    }
 
+    public static boolean checkRestElem(char[] ch, boolean isCorrect, int n) {
+        for (int i = 0; isCorrect && i < n; ++i) {
+            isCorrect = ch[i] >= 'A' && ch[i] <= 'Z' || ch[i] == '_' || ch[i] >= '0' && ch[i] <= '9';
+        }
+
+        return isCorrect;
+    }
+
+    public static boolean checkElem(char[] ch, int n) {
+        boolean isCorrect = checkFirstElem(ch);
+        isCorrect = checkRestElem(ch, isCorrect, n);
+        return isCorrect;
+    }
 
     public static char[] isStringToChar(String str) {
         char[] ch = new char[str.length()];
