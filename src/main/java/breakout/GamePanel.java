@@ -311,27 +311,7 @@ public class GamePanel {
         return matrix;
     }
 
-    public static char chooseOutputWay(String str) {
-        return str.charAt(0);
-    }
 
-    public static int[] inputMatrixSize() {
-        int rows = 1;
-        int cols = 0;
-        return new int[]{rows, cols};
-    }
-
-    public static double[][] inputMatrix(int size) {
-        int rows = size - 1;
-        int cols = size - 1;
-        double[][] matrix = new double[size][size];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols - 1; j++) {
-                matrix[i][j] = j;
-            }
-        }
-        return matrix;
-    }
 
     public static double[][] takeMatrixFromFile(int n, int a) {
         boolean isIncorrect;
