@@ -3,6 +3,27 @@ package main.java.breakout;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * This class includes all data about bricks.
+ * @author Alexandr Ravodin.
+ *  */
+
+public class Brick {
+
+    int brickXPos, brickYPos;
+
+    /**
+     * This is int field with brick width data.
+     *  */
+
+    int brickWidth = 80;
+
+    /**
+     * This is int field with brick height data.
+     *  */
+
+    int brickHeight = 40;
+
     /**
      * This is int field with horizontal offset.
      *  */
