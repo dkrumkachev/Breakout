@@ -1,10 +1,9 @@
 import breakout.GamePanel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static breakout.GamePanel.sortRow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GamePanelTest {
+class GamePanelTest {
     @Test
     @DisplayName("Order Matrix for 3 rows 3 cols with negative numbers")
     void sortMatrix3x3NegativeNumb(){

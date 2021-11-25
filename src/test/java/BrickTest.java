@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BrickTest {
+class BrickTest {
 
     @Test
     @DisplayName("check Brick(1, 2)")

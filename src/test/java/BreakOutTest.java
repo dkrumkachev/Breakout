@@ -7,7 +7,7 @@ import javax.swing.*;
 import static breakout.BreakOut.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BreakOutTest{
+class BreakOutTest{
 
     @Test
     @DisplayName("Test BreakOut setResizable")
