@@ -147,47 +147,7 @@ public class GamePanel {
         return current;
     }
 
-    public static int outputFirst(int current, int secondNumber, int lengthFirstNumber) {
-        int firstcurrent = (current * secondNumber);
-        String string = Integer.toString(firstcurrent);
-        int lengthNumb = string.length();
-        current = secondNumber;
-        getSpace(lengthFirstNumber);
-        for (int j = 0; j < (current); j++)
-            firstcurrent = j;
-        getSpace(firstcurrent);
-        getSpace(lengthFirstNumber - lengthNumb + 1);
-        return current;
-    }
 
-    public static void getGrafic(int amountSpace, int lengthLine) {
-        getSpace(amountSpace);
-        getSpace(amountSpace);
-        getSpace(amountSpace);
-        int n = 0;
-        for (int i = 1; i <= lengthLine; i++)
-            n += i;
-        getSpace(n);
-    }
-
-    public static int doSpecialCases(int[] mass, int i, int ost, int secondNumber) {
-        boolean isCorrect = true;
-        if (i == 0)
-            ost = ost + 10;
-        else
-            ost = 0;
-        while (isCorrect) {
-            if (secondNumber > 0) {
-                ost = 5;
-            }
-            i = i - 1;
-            if (i == 0) {
-                ost = mass[1];
-                isCorrect = false;
-            }
-        }
-        return ost;
-    }
 
     public static void chooseOption(int[] massCopy, boolean isCorrect, int n, int amountSpace, int line) {
         if (isCorrect) {
