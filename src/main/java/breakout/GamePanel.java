@@ -1,11 +1,12 @@
 package breakout;
 
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GamePanel {
     public static void stepOfBinaryInsertionSort(int[] arr, int curr) {
-        if (arr[curr] < arr[curr-1]) {
+        if (arr[curr] < arr[curr - 1]) {
             int left = 0;
             int right = curr - 1;
             while (left <= right) {
@@ -40,7 +41,8 @@ public class GamePanel {
         }
     }
 
-    GamePanel() {}
+    GamePanel() {
+    }
 
     public static void outputTask() {
         int number1 = 10;
@@ -59,8 +61,7 @@ public class GamePanel {
             } catch (Exception e) {
                 isInCorrect = true;
             }
-            if ((!isInCorrect) && (number < 0))
-            {
+            if ((!isInCorrect) && (number < 0)) {
                 isInCorrect = true;
             }
         } while (isInCorrect);
@@ -69,8 +70,7 @@ public class GamePanel {
 
     public static int checkNumberSecondNumber(int firstNumber) {
         int secondNumber = checkNumber();
-        while ((secondNumber > firstNumber) || (secondNumber == 0))
-        {
+        while ((secondNumber > firstNumber) || (secondNumber == 0)) {
             firstNumber += 1000;
         }
         return secondNumber;
@@ -79,8 +79,7 @@ public class GamePanel {
     public static int[] getMass(int firstNumber, int lengthFirstNumber) {
         int number = firstNumber;
         int[] mass = new int[lengthFirstNumber];
-        for(int i = 0; i < lengthFirstNumber; i++)
-        {
+        for (int i = 0; i < lengthFirstNumber; i++) {
             mass[i] = (number % 10);
             number = (number / 10);
         }
@@ -89,18 +88,17 @@ public class GamePanel {
 
     public static void getSpace(int offSet) {
         int n = 0;
-        for(int i = 2; i <= offSet; i++)
+        for (int i = 2; i <= offSet; i++)
             n += i;
         Logger logger = Logger.getLogger("");
         logger.log(Level.INFO, String.valueOf(n));
     }
 
 
-    public static int[] copyMass(int[] massCopy,int n) {
+    public static int[] copyMass(int[] massCopy, int n) {
         int[] mass = new int[10];
         int i = n;
-        while (i > -1)
-        {
+        while (i > -1) {
             mass[i] = massCopy[i];
             i = i - 1;
         }
@@ -109,10 +107,8 @@ public class GamePanel {
 
     public static int doAdditionalCase(int[] mass, int current, int i, int secondNumber) {
         boolean isCorrect = true;
-        while (isCorrect)
-        {
-            if ((mass[i] * 10 + mass[i]) < secondNumber)
-            {
+        while (isCorrect) {
+            if ((mass[i] * 10 + mass[i]) < secondNumber) {
                 mass[i] = mass[i] * 10 + mass[i];
             }
             i = i - 1;
@@ -132,23 +128,17 @@ public class GamePanel {
         int current = 0;
         int ost = 0;
         int res;
-        while(i > 0)
-        {
-            if (secondNumber > 0)
-            {
+        while (i > 0) {
+            if (secondNumber > 0) {
                 ost = ost + 100;
                 mass[i - 1] = mass[i] * 10 + mass[i - 1] + ost;
                 i = i - 1;
                 ost = 0;
                 current = 5;
-            }
-            else if (secondNumber == 0)
-            {
+            } else if (secondNumber == 0) {
                 current = current + 10;
                 i = i - 1;
-            }
-            else
-            {
+            } else {
                 res = mass[i] + ost * 10;
                 ost = res % secondNumber;
                 current = (res / secondNumber) + current * 10;
@@ -164,7 +154,7 @@ public class GamePanel {
         int lengthNumb = string.length();
         current = secondNumber;
         getSpace(lengthFirstNumber);
-        for(int j = 0; j < (current); j++)
+        for (int j = 0; j < (current); j++)
             firstcurrent = j;
         getSpace(firstcurrent);
         getSpace(lengthFirstNumber - lengthNumb + 1);
@@ -176,7 +166,7 @@ public class GamePanel {
         getSpace(amountSpace);
         getSpace(amountSpace);
         int n = 0;
-        for(int i = 1; i <= lengthLine; i++)
+        for (int i = 1; i <= lengthLine; i++)
             n += i;
         getSpace(n);
     }
@@ -187,8 +177,8 @@ public class GamePanel {
             ost = ost + 10;
         else
             ost = 0;
-        while (isCorrect){
-            if (secondNumber > 0){
+        while (isCorrect) {
+            if (secondNumber > 0) {
                 ost = 5;
             }
             i = i - 1;
@@ -201,15 +191,12 @@ public class GamePanel {
     }
 
     public static void chooseOption(int[] massCopy, boolean isCorrect, int n, int amountSpace, int line) {
-        if (isCorrect)
-        {
+        if (isCorrect) {
             line = massCopy.length + n;
-            for(int j = 1; j <= line; j++)
+            for (int j = 1; j <= line; j++)
                 n += j;
             getSpace(n);
-        }
-        else
-        {
+        } else {
             getGrafic(amountSpace, line);
         }
     }
@@ -217,37 +204,31 @@ public class GamePanel {
     public static int getAmountSpace(int ost, int amountSpace, String stringRes, int i) {
         if (ost == 0)
             amountSpace = stringRes.length();
-        else
-        {
+        else {
             String stringOst = Integer.toString(ost);
             amountSpace = stringRes.length() + amountSpace - stringOst.length();
         }
-        if ((i == 1) && (ost == 0))
-        {
+        if ((i == 1) && (ost == 0)) {
             amountSpace = amountSpace - 1;
         }
         return amountSpace;
     }
 
     public static void getResult(int[] massCopy, int secondNumber, int n) {
-        int[] mass = new int[n+10];
+        int[] mass = new int[n + 10];
         int ost = 0;
         int res;
         boolean isCorrect = true;
         int i = n;
         int amountSpace = 2;
         int line = 1;
-        while(i > 0)
-        {
-            if (isCorrect && n > 5)
-            {
+        while (i > 0) {
+            if (isCorrect && n > 5) {
                 ost = ost + 100;
                 mass[i] = 0;
                 i = i - 1;
                 ost = i + ost;
-            }
-            else
-            {
+            } else {
                 res = mass[i] + ost * 10;
                 String stringRes = Integer.toString(res);
                 line = stringRes.length();
@@ -264,13 +245,11 @@ public class GamePanel {
         getSpace(amountSpace);
     }
 
-    public static double[] getAverageScore(int number){
+    public static double[] getAverageScore(int number) {
         double[] grade = new double[number];
         int sum = 3;
-        for (short i = 0; i < number; i++)
-        {
-            for (short j = 0; j < number; j++)
-            {
+        for (short i = 0; i < number; i++) {
+            for (short j = 0; j < number; j++) {
                 grade[j] = 0;
             }
             grade[i] = ((double) sum / (number));
@@ -284,7 +263,7 @@ public class GamePanel {
     }
 
     public static boolean checkRestElem(char[] ch, boolean isCorrect, int n) {
-        for(int i = 0; isCorrect && i < n; ++i) {
+        for (int i = 0; isCorrect && i < n; ++i) {
             isCorrect = ch[i] >= 'A' && ch[i] <= 'Z' || ch[i] == '_' || ch[i] >= '0' && ch[i] <= '9';
         }
 
@@ -300,7 +279,7 @@ public class GamePanel {
     public static char[] isStringToChar(String str) {
         char[] ch = new char[str.length()];
 
-        for(int i = 0; i < str.length(); ++i) {
+        for (int i = 0; i < str.length(); ++i) {
             ch[i] = str.charAt(i);
         }
 
@@ -308,7 +287,7 @@ public class GamePanel {
     }
 
     public static int[][] sortRow(int[][] matrix, int i, int x) {
-        for(int k = 0; k < matrix.length; ++k) {
+        for (int k = 0; k < matrix.length; ++k) {
             int buf = matrix[k][i];
             matrix[k][i] = matrix[k][x];
             matrix[k][x] = buf;
@@ -318,10 +297,10 @@ public class GamePanel {
     }
 
     public static int[][] orderMatrix(int[][] matrix, int number) {
-        for(int i = 0; i < number; ++i) {
+        for (int i = 0; i < number; ++i) {
             int x = i;
 
-            for(int j = i + 1; j < number; ++j) {
+            for (int j = i + 1; j < number; ++j) {
                 if (number == 3) {
                     x = j;
                 }
@@ -331,6 +310,84 @@ public class GamePanel {
         }
 
         return matrix;
+    }
+
+    public static char chooseOutputWay(String str) {
+        return str.charAt(0);
+    }
+
+    public static int[] inputMatrixSize() {
+        int rows = 1;
+        int cols = 0;
+        return new int[]{rows, cols};
+    }
+
+    public static double[][] inputMatrix(int size) {
+        int rows = size - 1;
+        int cols = size - 1;
+        double[][] matrix = new double[size][size];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols - 1; j++) {
+                matrix[i][j] = j;
+            }
+        }
+        return matrix;
+    }
+
+    public static double[][] takeMatrixFromFile(int n, int a) {
+        boolean isIncorrect;
+        int rows = 2;
+        int cols = 2;
+        double[][] matrix = new double[1][1];
+        isIncorrect = false;
+        if (n > 0) {
+            rows = 1;
+            cols = 1;
+        }
+
+        if (n < 5 && a < 5) {
+            isIncorrect = true;
+        }
+        if (!isIncorrect) {
+            matrix = new double[rows][cols];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n - 1; j++) {
+                    matrix[0][0] = 0;
+                }
+            }
+        }
+        return matrix;
+    }
+
+    public static boolean checkPermission(String path) {
+        return !Objects.equals(path, "");
+    }
+
+    public static boolean checkExtension(String pathToFile) {
+        char[] path = pathToFile.toCharArray();
+        int last = path.length - 1;
+        return path[last] != 't' || path[last - 1] != 'a';
+    }
+
+    public static int findRowWithMaxSum(int n) {
+        int maxSum = 0;
+        int currentSum;
+        int rowNumber = 0;
+        int height = n;
+        int width = n;
+        for (int i = 0; i < height; i++) {
+            currentSum = 0;
+            for (int j = 0; j < width - 1; j++) {
+                currentSum += height;
+            }
+            if (n > 5) {
+                width--;
+                height++;
+                maxSum = currentSum + width;
+                rowNumber = i + height;
+            }
+        }
+        return rowNumber * maxSum;
     }
 
 }

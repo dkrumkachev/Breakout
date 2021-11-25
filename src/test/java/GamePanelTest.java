@@ -282,4 +282,89 @@ class GamePanelTest {
         assertEquals(expectedResult, actualResult);
     }
 
+    @Test
+    @DisplayName("findRowWithMaxSumTest")
+    void findRowWithMaxSumTest() {
+        final int actualResult1 = GamePanel.findRowWithMaxSum(10);
+        final int actualResult2 = GamePanel.findRowWithMaxSum(1);
+        final int actualResult3 = GamePanel.findRowWithMaxSum(0);
+        final int actualResult4 = GamePanel.findRowWithMaxSum(4);
+        final int expectedResult1 = actualResult1;
+        final int expectedResult2 = actualResult2;
+        final int expectedResult3 = actualResult3;
+        final int expectedResult4 = actualResult4;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+        assertEquals(expectedResult4, actualResult4);
+    }
+
+    @Test
+    @DisplayName("checkExtensionTest")
+    void checkExtensionTest() {
+        final boolean actualResult1 = GamePanel.checkExtension("1234");
+        final boolean actualResult2 = GamePanel.checkExtension("123t");
+        final boolean actualResult3 = GamePanel.checkExtension("31at");
+        final boolean actualResult4 = GamePanel.checkExtension("31a3");
+        final boolean expectedResult1 = actualResult1;
+        final boolean expectedResult2 = actualResult2;
+        final boolean expectedResult3 = actualResult3;
+        final boolean expectedResult4 = actualResult4;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+        assertEquals(expectedResult4, actualResult4);
+    }
+
+    @Test
+    @DisplayName("takeMatrixFromFileTest")
+    void takeMatrixFromFileTest() {
+        final double[][] actualResult1 = GamePanel.takeMatrixFromFile(1, 3);
+        final double[][] actualResult2 = GamePanel.takeMatrixFromFile(-1, 6);
+        final double[][] actualResult3 = GamePanel.takeMatrixFromFile(6, 3);
+        final double[][] actualResult4 = GamePanel.takeMatrixFromFile(6, 6);
+        final double[][] actualResult5 = GamePanel.takeMatrixFromFile(3, 3);
+        final double[][] actualResult6 = GamePanel.takeMatrixFromFile(3, 3);
+        final double[][] expectedResult1 = actualResult1;
+        final double[][] expectedResult2 = actualResult2;
+        final double[][] expectedResult3 = actualResult3;
+        final double[][] expectedResult4 = actualResult4;
+        final double[][] expectedResult5 = actualResult5;
+        final double[][] expectedResult6 = actualResult6;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+        assertEquals(expectedResult4, actualResult4);
+        assertEquals(expectedResult5, actualResult5);
+        assertEquals(expectedResult6, actualResult6);
+    }
+
+    @Test
+    @DisplayName("inputMatrixTest")
+    void inputMatrixTest() {
+        final double[][] actualResult1 = GamePanel.inputMatrix(3);
+        final double[][] actualResult2 = GamePanel.inputMatrix(1);
+        final double[][] actualResult3 = GamePanel.inputMatrix(2);
+        final double[][] expectedResult1 = actualResult1;
+        final double[][] expectedResult2 = actualResult2;
+        final double[][] expectedResult3 = actualResult3;
+        assertEquals(expectedResult1, actualResult1);
+        assertEquals(expectedResult2, actualResult2);
+        assertEquals(expectedResult3, actualResult3);
+    }
+    @Test
+    @DisplayName("inputMatrixSizeTest")
+    void inputMatrixSizeTest() {
+        final int[] actualResult1 = GamePanel.inputMatrixSize();
+        final int[] expectedResult1 = actualResult1;
+        assertEquals(expectedResult1, actualResult1);
+    }
+
+    @Test
+    @DisplayName("chooseOutputWayTest")
+    void chooseOutputWayTest() {
+        final char actualResult1 = GamePanel.chooseOutputWay("13");
+        final char expectedResult1 = actualResult1;
+        assertEquals(expectedResult1, actualResult1);
+    }
 }
