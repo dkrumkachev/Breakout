@@ -33,5 +33,23 @@ public class BreakOut extends JFrame {
         game.setVisible(true);
 
     }
+    public static int sum(int a, int b){
+        return a + b;
+    }
 
+    public static int sumQ(int a, int b){
+        return a + b;
+    }
+
+    public static int sumE(int a, int b){
+        return a + b;
+    }
+
+    public static int sumR(int a, int b){
+        return a + b;
+    }
+
+    public static int sumT(int a, int b){
+        return a + b;
+    }
 }
