@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BrickTest {
+public class BrickTest {
 
     @Test
     @DisplayName("check Brick(1, 2)")
-    void checkBrick() {
+    public void checkBrick() {
         boolean expectedResult = true;
         new Brick(1, 2) {
         };
@@ -18,7 +18,7 @@ class BrickTest {
 
     @Test
     @DisplayName("check function drawBrick")
-    void checkDrawBrick() {
+    public void checkDrawBrick() {
         boolean expectedResult = true;
         new Brick(1, 5) {
             public void drawBrick(Graphics g) {
@@ -34,7 +34,7 @@ class BrickTest {
 
     @Test
     @DisplayName("check Rectangle with options")
-    void checkRectangleWidth1() {
+    public void checkRectangleWidth1() {
         boolean expectedResult = true;
         new Brick(3, 4) {
             public void drawBrick(Graphics g) {
@@ -50,7 +50,7 @@ class BrickTest {
 
     @Test
     @DisplayName("check Rectangle with options")
-    void checkRectangleWidth2() {
+    public void checkRectangleWidth2() {
         boolean expectedResult = true;
         new Brick(2, 3) {
             public void drawBrick(Graphics g) {

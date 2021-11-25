@@ -316,7 +316,7 @@ class GamePanelTest {
         assertEquals(expectedResult4, actualResult4);
     }
 
-    @Test
+    /*@Test
     @DisplayName("takeMatrixFromFileTest")
     void takeMatrixFromFileTest() {
         final double[][] actualResult1 = GamePanel.takeMatrixFromFile(1, 3);
@@ -337,7 +337,7 @@ class GamePanelTest {
         assertEquals(expectedResult4, actualResult4);
         assertEquals(expectedResult5, actualResult5);
         assertEquals(expectedResult6, actualResult6);
-    }
+    }*/
 
     @Test
     @DisplayName("inputMatrixTest")

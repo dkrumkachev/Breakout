@@ -7,11 +7,11 @@ import javax.swing.*;
 import static breakout.BreakOut.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BreakOutTest{
+public class BreakOutTest{
 
     @Test
     @DisplayName("Test BreakOut setResizable")
-    void testGameResizable(){
+    public void testGameResizable(){
         boolean expectedResult = true;
         boolean actualResult;
         JInternalFrame game = new JInternalFrame();
@@ -27,7 +27,7 @@ class BreakOutTest{
 
     @Test
     @DisplayName("Test Create New Object Game")
-    void testCreationGame(){
+    public void testCreationGame(){
         boolean expectedResult = true;
         boolean actualResult;
         JInternalFrame game = new JInternalFrame();
@@ -43,7 +43,7 @@ class BreakOutTest{
 
     @Test
     @DisplayName("Test Create New Object Game")
-    void testCreationGame2(){
+    public void testCreationGame2(){
         int expectedResult = 12;
         int actualResult = sum(5, 7);
         assertEquals(expectedResult, actualResult);
@@ -51,7 +51,7 @@ class BreakOutTest{
 
     @Test
     @DisplayName("Test GamePack")
-    void testGamePack(){
+    public void testGamePack(){
         boolean expectedResult = true;
         boolean actualResult;
         JInternalFrame game = new JInternalFrame();
@@ -67,7 +67,7 @@ class BreakOutTest{
 
     @Test
     @DisplayName("Test New Game Start")
-    void testNewGameStart(){
+    public void testNewGameStart(){
         boolean expectedResult = true;
         boolean actualResult;
         JInternalFrame game = new JInternalFrame();
@@ -83,7 +83,7 @@ class BreakOutTest{
 
     @Test
     @DisplayName("Test Create New Object Game")
-    void testCreationGame4(){
+    public void testCreationGame4(){
         int expectedResult = 12;
         int actualResult = sumT(5, 7);
         assertEquals(expectedResult, actualResult);
@@ -91,7 +91,7 @@ class BreakOutTest{
 
     @Test
     @DisplayName("Test Create New Object Game")
-    void testCreationGame5(){
+    public void testCreationGame5(){
         int expectedResult = 12;
         int actualResult = sumQ(5, 7);
         assertEquals(expectedResult, actualResult);
@@ -99,14 +99,14 @@ class BreakOutTest{
 
     @Test
     @DisplayName("Test Create New Object Game")
-    void testCreationGame6(){
+    public void testCreationGame6(){
         int expectedResult = 12;
         int actualResult = sumE(5, 7);
         assertEquals(expectedResult, actualResult);
     }
     @Test
     @DisplayName("Test Create New Object Game")
-    void testCreationGame7(){
+    public void testCreationGame7(){
         int expectedResult = 12;
         int actualResult = sumR(5, 7);
         assertEquals(expectedResult, actualResult);
