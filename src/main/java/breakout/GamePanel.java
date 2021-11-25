@@ -1,599 +1,293 @@
-package main.java.breakout;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
+package breakout;
 
-/**
- * This is the class of game process.
- * @author Dmitry Krumkachyov.
- *  */
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class GamePanel extends JPanel {
-    int width = 1220;
-    ScoreBoard s;
+public class GamePanel {
+    public static void stepOfBinaryInsertionSort(int[] arr, int curr) {
+        if (arr[curr] < arr[curr - 1]) {
+            int left = 0;
+            int right = curr - 1;
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                if (arr[curr] < arr[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
 
+            int tmp = arr[curr];
 
-    public GamePanel() {
-
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        s = new ScoreBoard();
-        MainPanel p = new MainPanel();
-        this.add(s);
-        this.add(p);
-
-    }
-
-    /**
-     * This class includes lives and score and its their showing.
-     * @author Dmitry Krumkachyov.
-     *  */
-
-    public class ScoreBoard extends JPanel {
-
-        /**
-         * These values store count of points.
-         *  */
-
-        int score = 0;
-
-        /**
-         * These values store count of lives.
-         *  */
-
-        int life = 4;
-
-        public ScoreBoard() {
-            this.setPreferredSize(new Dimension(width, 100));
-            this.setBorder(BorderFactory.createLineBorder(Color.BLUE, 3));
-            this.setBackground(Color.BLACK);
-        }
-
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            g.setColor(Color.WHITE);
-            g.setFont(new Font("Times new roman", Font.PLAIN, 80));
-            g.drawString("BreakOut", 430, 80);
-
-            g.setFont(new Font("Times new roman", Font.PLAIN, 50));
-            g.drawString("Счёт: " + score, 1000, 80);
-            g.drawString("Жизни: " + life, 20, 80);
-        }
-
-        void refresh() {
-            repaint();
+            if (curr - left >= 0)
+                System.arraycopy(arr, left, arr, left + 1, curr - left);
+            arr[left] = tmp;
         }
     }
 
-
-    /**
-     * This class implements and shows game process.
-     * @author Daria Zavalyuk.
-     *  */
-
-    public class MainPanel extends JPanel implements ActionListener, KeyListener {
-
-        Timer t;
-
-        int width = 1220, height = 600;
-
-        //bat
-        int batxpos = 500, batypos = 740;
-        int batxvel = 0;
-        int batwidth = 130, batheight = 5;
-
-        //ball
-
-        int balldia = 30;
-        int ballxpos = (batxpos + (batwidth / 2) - (balldia / 2)), ballypos = batypos - balldia - 3;
-        int ballxvel = 0, ballyvel = 0;
-
-
-        //bricks
-        int rows = 5, cols = 10;
-        Brick[][] b = new Brick[rows][cols];
-        int[][] brickvalue = new int[rows][cols];
-        int bricksleft = rows * cols;
-
-        //game variables
-        boolean gameover = false;
-        boolean startgame = false;
-        boolean winner = false;
-
-        boolean batcollide = false;
-
-
-        /**
-         * This class implements and shows game process.
-         * @author Daria Zavalyuk.
-         *  */
-
-        public MainPanel() {
-            this.setPreferredSize(new Dimension(width, height));
-            this.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
-            this.setBackground(Color.cyan);//цвет фона на мяче
-            t = new Timer(1, this);
-            setValue();
-            addKeyListener(this);
-            setFocusable(true);
-            this.setFocusTraversalKeysEnabled(false);
-
-            t.start();
-        }
-
-        public void paintComponent(Graphics g) {
-            super.paintComponent(g);
-
-            drawBrickMap(g);
-
-            g.setColor(Color.BLUE);//цвет каретки
-            g.fill3DRect(batxpos, batypos, batwidth, batheight, true);
-            g.setColor(Color.BLACK);
-            g.drawRect(batxpos, batypos, batwidth, batheight);
-
-
-            g.setColor(Color.white);//цвет мяча
-            g.fillOval(ballxpos, ballypos, balldia, balldia);
-
-
-            if (!startgame && !gameover) {
-                drawStartGame(g);
+    public static void stepByStepDetailingSort(int[] arr, int choice) {
+        int len = arr.length;
+        if (choice == 1) {
+            for (int i = 1; i < len; i++) {
+                stepOfBinaryInsertionSort(arr, i);
             }
 
-            if (winner) {
-                drawOptions(g);
-                win(g);
-                t.stop();
-            }
-
-            if (gameover) {
-                drawOptions(g);
-                showGameOver(g);
-            }
-
-
-        }
-
-        /**
-         * This method create all bricks.
-         * @author Daria Zavalyuk.
-         *  */
-
-        public void drawBrickMap(Graphics g) {
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < cols; j++) {
-                    if (brickvalue[i][j] == 1) {
-                        switch (i) {
-                            case 0 -> g.setColor(Color.red);
-                            case 1 -> g.setColor(Color.orange);
-                            case 2 -> g.setColor(Color.yellow);
-                            case 3 -> g.setColor(Color.green);
-                            case 4 -> g.setColor(Color.blue);
-                        }
-                        b[i][j].drawBrick(g);
-                    }
-                }
+        } else {
+            getSpace(choice);
+            for (int i = 1; i < len; i++) {
+                stepOfBinaryInsertionSort(arr, i);
             }
         }
+    }
 
-        public void setValue() {
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < cols; j++) {
-                    brickvalue[i][j] = 1;
-                    b[i][j] = new Brick(i, j);
-                }
+    GamePanel() {
+    }
+
+    public static void outputTask() {
+        int number1 = 10;
+        int number2 = 1;
+        int sum = number1 + number2;
+        getSpace(sum);
+    }
+
+    public static int checkNumber() {
+        boolean isInCorrect;
+        int number = 3;
+        do {
+            isInCorrect = false;
+            try {
+                number = Integer.parseInt("3");
+            } catch (Exception e) {
+                isInCorrect = true;
+            }
+            if ((!isInCorrect) && (number < 0)) {
+                isInCorrect = true;
+            }
+        } while (isInCorrect);
+        return number;
+    }
+
+    public static int checkNumberSecondNumber(int firstNumber) {
+        int secondNumber = checkNumber();
+        while ((secondNumber > firstNumber) || (secondNumber == 0)) {
+            firstNumber += 1000;
+        }
+        return secondNumber;
+    }
+
+    public static int[] getMass(int firstNumber, int lengthFirstNumber) {
+        int number = firstNumber;
+        int[] mass = new int[lengthFirstNumber];
+        for (int i = 0; i < lengthFirstNumber; i++) {
+            mass[i] = (number % 10);
+            number = (number / 10);
+        }
+        return mass;
+    }
+
+    public static void getSpace(int offSet) {
+        int n = 0;
+        for (int i = 2; i <= offSet; i++)
+            n += i;
+        Logger logger = Logger.getLogger("");
+        logger.log(Level.INFO, String.valueOf(n));
+    }
+
+
+    public static int[] copyMass(int[] massCopy, int n) {
+        int[] mass = new int[10];
+        int i = n;
+        while (i > -1) {
+            mass[i] = massCopy[i];
+            i = i - 1;
+        }
+        return mass;
+    }
+
+    public static int doAdditionalCase(int[] mass, int current, int i, int secondNumber) {
+        boolean isCorrect = true;
+        while (isCorrect) {
+            if ((mass[i] * 10 + mass[i]) < secondNumber) {
+                mass[i] = mass[i] * 10 + mass[i];
+            }
+            i = i - 1;
+            if (i == 0) {
+                isCorrect = false;
+            }
+
+        }
+        current = current * 10;
+        return current;
+    }
+
+    public static int getCurrent(int[] massCopy, int secondNumber, int lengthFirstNumber) {
+        int[] mass;
+        mass = copyMass(massCopy, lengthFirstNumber);
+        int i = lengthFirstNumber;
+        int current = 0;
+        int ost = 0;
+        int res;
+        while (i > 0) {
+            if (secondNumber > 0) {
+                ost = ost + 100;
+                mass[i - 1] = mass[i] * 10 + mass[i - 1] + ost;
+                i = i - 1;
+                ost = 0;
+                current = 5;
+            } else if (secondNumber == 0) {
+                current = current + 10;
+                i = i - 1;
+            } else {
+                res = mass[i] + ost * 10;
+                ost = res % secondNumber;
+                current = (res / secondNumber) + current * 10;
+                i = i - 1;
             }
         }
+        return current;
+    }
 
-        /**
-         * This method which starts project running.
-         * @author Alexandr Ravodin.
-         *  */
+    public static int outputFirst(int current, int secondNumber, int lengthFirstNumber) {
+        int firstcurrent = (current * secondNumber);
+        String string = Integer.toString(firstcurrent);
+        int lengthNumb = string.length();
+        current = secondNumber;
+        getSpace(lengthFirstNumber);
+        for (int j = 0; j < (current); j++)
+            firstcurrent = j;
+        getSpace(firstcurrent);
+        getSpace(lengthFirstNumber - lengthNumb + 1);
+        return current;
+    }
 
-        @Override
-        public void actionPerformed(ActionEvent arg0) {
-            ballxpos += ballxvel;
-            ballypos += ballyvel;
+    public static void getGrafic(int amountSpace, int lengthLine) {
+        getSpace(amountSpace);
+        getSpace(amountSpace);
+        getSpace(amountSpace);
+        int n = 0;
+        for (int i = 1; i <= lengthLine; i++)
+            n += i;
+        getSpace(n);
+    }
 
-            batxpos += batxvel;
-
-            if (batxpos < 0 || batxpos + batwidth > width) {
-                batxvel = 0;
+    public static int doSpecialCases(int[] mass, int i, int ost, int secondNumber) {
+        boolean isCorrect = true;
+        if (i == 0)
+            ost = ost + 10;
+        else
+            ost = 0;
+        while (isCorrect) {
+            if (secondNumber > 0) {
+                ost = 5;
             }
-
-            if (ballxpos < 0 || ballxpos + balldia >= width) {
-                ballxvel = -ballxvel;
+            i = i - 1;
+            if (i == 0) {
+                ost = mass[1];
+                isCorrect = false;
             }
-            if (ballypos < 0) {
-                ballyvel = -ballyvel;
-            }
-            if (ballypos >= height) {
+        }
+        return ost;
+    }
 
-                s.life--;
-                if (s.life == 0) {
-                    gameover = true;
-                    startgame = false;
-                    t.stop();
-                } else {
-                    batxpos = 550;
-                    batypos = 550;
-                    ballxpos = (batxpos + (batwidth / 2) - (balldia / 2));
-                    ballypos = batypos - balldia - 3;
-                    ballxvel = 0;
-                    ballyvel = 0;
-                    startgame = false;
-                }
+    public static void chooseOption(int[] massCopy, boolean isCorrect, int n, int amountSpace, int line) {
+        if (isCorrect) {
+            line = massCopy.length + n;
+            for (int j = 1; j <= line; j++)
+                n += j;
+            getSpace(n);
+        } else {
+            getGrafic(amountSpace, line);
+        }
+    }
 
+    public static int getAmountSpace(int ost, int amountSpace, String stringRes, int i) {
+        if (ost == 0)
+            amountSpace = stringRes.length();
+        else {
+            String stringOst = Integer.toString(ost);
+            amountSpace = stringRes.length() + amountSpace - stringOst.length();
+        }
+        if ((i == 1) && (ost == 0)) {
+            amountSpace = amountSpace - 1;
+        }
+        return amountSpace;
+    }
 
-            }
-
-            Ellipse2D.Double ball = new Ellipse2D.Double(ballxpos, ballypos, balldia, balldia);
-            Rectangle2D.Double bat = new Rectangle2D.Double(batxpos, batypos, batwidth, batheight);
-
-
-            if (!batcollide) {
-                if (((ballypos + balldia) == batypos) &&
-                        (ballxpos + (balldia / 2)) >= batxpos &&
-                        ((ballxpos + (balldia / 2)) <= (batxpos + batwidth))) {
-                    System.out.println("bat vertical");
-                    ballyvel = -ballyvel;
-                    batcollide = true;
-                } else {
-                    if (ball.intersects(bat)) {
-                        if (ballxpos < (batxpos + batwidth / 2) && ballypos < (batypos + batheight)) {
-
-                            if (ballxvel < 0 && ballyvel > 0) {
-                                ballyvel = -ballyvel;
-                                System.out.println("bat vertical");
-
-                            } else if (ballxvel > 0 && ballyvel > 0) {
-                                ballyvel = -ballyvel;
-                                ballxvel = -ballxvel;
-                                System.out.println("bat diagonal");
-
-                            }
-                        } else if (ballxpos > (batxpos + batwidth / 2) && ballypos < (batypos + batheight)) {
-                            if (ballxvel < 0 && ballyvel > 0) {
-                                ballyvel = -ballyvel;
-                                ballxvel = -ballxvel;
-                                System.out.println("bat diagonal");
-
-                            } else if (ballxvel > 0 && ballyvel > 0) {
-                                ballyvel = -ballyvel;
-                                System.out.println("bat vertical");
-
-                            }
-                        }
-                        batcollide = true;
-                    }
-                }
-            }
-
-            if (batcollide) {
-                if (!ball.intersects(bat)) {
-                    batcollide = false;
-                }
-            }
-
-
-            A:
-
-            /**
-             * This cycle describes collidings.
-             * @author Dmitry Krumkachyov.
-             *  */
-
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < cols; j++) {
-                    if (brickvalue[i][j] == 1) {
-                        Rectangle2D.Double br = new Rectangle2D.Double(b[i][j].brickXPos, b[i][j].brickYPos, b[i][j].brickWidth, b[i][j].brickHeight);
-
-                        if (((ballypos + balldia) == b[i][j].brickYPos) &&
-                                (ballxpos + (balldia / 2)) >= b[i][j].brickXPos &&
-                                ((ballxpos + (balldia / 2)) <= (b[i][j].brickXPos + b[i][j].brickWidth))) {
-                            System.out.println("pure vertical");
-                            ballyvel = -ballyvel;
-                            update(i, j);
-                            break A;
-
-                        } else if ((((ballypos) == (b[i][j].brickYPos + b[i][j].brickHeight)) &&
-                                (ballxpos + (balldia / 2)) >= b[i][j].brickXPos) &&
-                                ((ballxpos + (balldia / 2)) <= (b[i][j].brickXPos + b[i][j].brickWidth))) {
-                            System.out.println("pure vertical");
-                            ballyvel = -ballyvel;
-                            update(i, j);
-                            break A;
-                        } else if (((ballxpos + balldia) == b[i][j].brickXPos) &&
-                                ((ballypos + (balldia / 2)) >= b[i][j].brickYPos) &&
-                                ((ballypos + (balldia / 2)) <= (b[i][j].brickYPos + b[i][j].brickHeight))) {
-                            System.out.println("pure horizontal");
-                            ballxvel = -ballxvel;
-                            update(i, j);
-                            break A;
-                        } else if (((ballxpos) == (b[i][j].brickXPos + b[i][j].brickWidth)) &&
-                                ((ballypos + (balldia / 2)) >= b[i][j].brickYPos) &&
-                                ((ballypos + (balldia / 2)) <= (b[i][j].brickYPos + b[i][j].brickHeight))) {
-                            System.out.println("pure horizontal");
-                            ballxvel = -ballxvel;
-                            update(i, j);
-                            break A;
-                        } else if (ball.intersects(br)) {
-                            if (ballxpos < (b[i][j].brickXPos + b[i][j].brickWidth / 2) && ballypos < (b[i][j].brickYPos + b[i][j].brickHeight / 2)) {
-                                if (ballxvel > 0 && ballyvel < 0) {
-                                    System.out.println("horizontal");
-                                    ballxvel = -ballxvel;
-                                    update(i, j);
-                                    break A;
-                                } else if (ballxvel < 0 && ballyvel > 0) {
-                                    ballyvel = -ballyvel;
-                                    System.out.println("vertical");
-                                    update(i, j);
-                                    break A;
-                                } else if (ballxvel > 0 && ballyvel > 0) {
-                                    ballyvel = -ballyvel;
-                                    ballxvel = -ballxvel;
-                                    System.out.println("diagonal");
-                                    update(i, j);
-                                    break A;
-                                }
-                            } else if (ballxpos > (b[i][j].brickXPos + b[i][j].brickWidth / 2) && ballypos < (b[i][j].brickYPos + b[i][j].brickHeight / 2)) {
-                                if (ballxvel < 0 && ballyvel > 0) {
-                                    ballyvel = -ballyvel;
-                                    ballxvel = -ballxvel;
-                                    System.out.println("diagonal");
-                                    update(i, j);
-                                    break A;
-                                } else if (ballxvel > 0 && ballyvel > 0) {
-                                    ballyvel = -ballyvel;
-                                    System.out.println("vertical");
-                                    update(i, j);
-                                    break A;
-                                } else if (ballxvel < 0 && ballyvel < 0) {
-                                    System.out.println("horizontal");
-                                    ballxvel = -ballxvel;
-                                    update(i, j);
-                                    break A;
-                                }
-                            } else if (ballxpos > (b[i][j].brickXPos + b[i][j].brickWidth / 2) && ballypos > (b[i][j].brickYPos + b[i][j].brickHeight / 2)) {
-                                if (ballxvel > 0 && ballyvel < 0) {
-                                    System.out.println("vertical");
-                                    ballyvel = -ballyvel;
-                                    update(i, j);
-                                    break A;
-                                } else if (ballxvel < 0 && ballyvel > 0) {
-                                    ballxvel = -ballxvel;
-                                    System.out.println("horizontal");
-                                    update(i, j);
-                                    break A;
-                                } else if (ballxvel < 0 && ballyvel < 0) {
-                                    ballyvel = -ballyvel;
-                                    ballxvel = -ballxvel;
-                                    System.out.println("diagonal");
-                                    update(i, j);
-                                    break A;
-                                }
-                            } else if (ballxpos < (b[i][j].brickXPos + b[i][j].brickWidth / 2) && ballypos > (b[i][j].brickYPos + b[i][j].brickHeight / 2)) {
-                                if (ballxvel > 0 && ballyvel < 0) {
-                                    ballyvel = -ballyvel;
-                                    ballxvel = -ballxvel;
-                                    System.out.println("diagonal");
-                                    update(i, j);
-                                    break A;
-                                } else if (ballxvel > 0 && ballyvel > 0) {
-                                    ballxvel = -ballxvel;
-                                    System.out.println("horizontal");
-                                    update(i, j);
-                                    break A;
-                                } else if (ballxvel < 0 && ballyvel < 0) {
-                                    System.out.println("vertical");
-                                    ballyvel = -ballyvel;
-                                    update(i, j);
-                                    break A;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (bricksleft <= 0) {
-                    winner = true;
-                    t.stop();
-                }
-
-                repaint();
-                s.refresh();
+    public static void getResult(int[] massCopy, int secondNumber, int n) {
+        int[] mass = new int[n + 10];
+        int ost = 0;
+        int res;
+        boolean isCorrect = true;
+        int i = n;
+        int amountSpace = 2;
+        int line = 1;
+        while (i > 0) {
+            if (isCorrect && n > 5) {
+                ost = ost + 100;
+                mass[i] = 0;
+                i = i - 1;
+                ost = i + ost;
+            } else {
+                res = mass[i] + ost * 10;
+                String stringRes = Integer.toString(res);
+                line = stringRes.length();
+                ost = (res % secondNumber);
+                if ((secondNumber == 3) && (n == 1))
+                    line = line + 1;
+                chooseOption(massCopy, isCorrect, n, amountSpace, line);
+                amountSpace = 0;
+                i = i - 1;
+                isCorrect = false;
 
             }
         }
+        getSpace(amountSpace);
+    }
 
-        /**
-         * This method gives points for each broken brick.
-         * @author Alexandr Ravodin.
-         * @param i row.
-         * @param j column.
-         *  */
-
-        void update(int i, int j) {
-            brickvalue[i][j] = 0;
-
-
-            /**
-             * Changing score.
-             * @link ScoreBoard.
-             *  */
-
-            if (i == 4) s.score += 1;
-            if (i == 3) s.score += 3;
-            if (i == 2) s.score += 5;
-            if (i == 1) s.score += 7;
-            if (i == 0) s.score += 9;
-            bricksleft--;
-        }
-
-        /**
-         * This method sets up game depends on pressed key.
-         * @author Alexandr Ravodin.
-         * @param e pressing key.
-         *  */
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            int key = e.getKeyCode();
-            if (!startgame && !gameover) {
-                if (key == KeyEvent.VK_SPACE) {
-                    startgame = true;
-                    ballxvel = 3;
-                    ballyvel = 3;
-                    t.start();
-                }
+    public static double[] getAverageScore(int number) {
+        double[] grade = new double[number];
+        int sum = 3;
+        for (short i = 0; i < number; i++) {
+            for (short j = 0; j < number; j++) {
+                grade[j] = 0;
             }
-            if (!startgame) {
-                if (key == KeyEvent.VK_LEFT) {
-                    if (batxpos >= 0) {
-                        batxvel = -5;
-                        ballxvel = -5;
-                    } else {
-                        batxvel = 0;
-                        ballxvel = 0;
-                    }
-                }
-                if (key == KeyEvent.VK_RIGHT) {
-                    if (batxpos + batwidth <= width) {
-                        batxvel = 5;
-                        ballxvel = 5;
-                    } else {
-                        batxvel = 0;
-                        ballxvel = 0;
-                    }
-                }
-            }
+            grade[i] = ((double) sum / (number));
+            sum++;
+        }
+        return grade;
+    }
 
-            if (startgame) {
-                if (key == KeyEvent.VK_LEFT) {
-                    if (batxpos >= 0) {
-                        batxvel = -10;
+    public static boolean checkFirstElem(char[] ch) {
+        return ch[0] >= 'A' && ch[0] <= 'Z' || ch[0] == '_';
+    }
 
-                    } else
-                        batxvel = 0;
-                }
-                if (key == KeyEvent.VK_RIGHT) {
-                    if (batxpos + batwidth <= width) {
-                        batxvel = 10;
-
-                    } else
-                        batxvel = 0;
-                }
-            }
-
-            if (key == KeyEvent.VK_ESCAPE) {
-                System.exit(0);
-            }
-
-            if (key == KeyEvent.VK_R) {
-
-                batxpos = 500;
-                batypos = 550;
-
-
-                ballxpos = (batxpos + (batwidth / 2) - (balldia / 2));
-                ballypos = batypos - balldia - 3;
-                ballxvel = 0;
-                ballyvel = 0;
-
-                bricksleft = rows * cols;
-
-                gameover = false;
-                startgame = false;
-                winner = false;
-                setValue();
-                s.life = 3;
-                s.score = 0;
-                s.refresh();
-                t.start();
-            }
-
-            repaint();
-
-
+    public static boolean checkRestElem(char[] ch, boolean isCorrect, int n) {
+        for (int i = 0; isCorrect && i < n; ++i) {
+            isCorrect = ch[i] >= 'A' && ch[i] <= 'Z' || ch[i] == '_' || ch[i] >= '0' && ch[i] <= '9';
         }
 
-        @Override
-        public void keyReleased(KeyEvent arg0) {
-            if (!startgame) {
-                batxvel = 0;
-                ballxvel = 0;
-            } else
-                batxvel = 0;
+        return isCorrect;
+    }
 
+    public static boolean checkElem(char[] ch, int n) {
+        boolean isCorrect = checkFirstElem(ch);
+        isCorrect = checkRestElem(ch, isCorrect, n);
+        return isCorrect;
+    }
+
+    public static char[] isStringToChar(String str) {
+        char[] ch = new char[str.length()];
+
+        for (int i = 0; i < str.length(); ++i) {
+            ch[i] = str.charAt(i);
         }
 
-        @Override
-        public void keyTyped(KeyEvent arg0) {
-        }
-
-
-        /**
-         * This method prints "GAME OVER" and shows the score in case of losing.
-         * @author Daria Zavalyuk.
-         *  */
-
-        void showGameOver(Graphics g) {
-
-            g.setColor(Color.orange);
-            g.setFont(new Font("Times new roman", Font.PLAIN, 40));
-            g.drawString("GAME OVER", width / 2 - 170, height / 2 + 10);
-            g.setColor(Color.GREEN);
-            g.setFont(new Font("Times new roman", Font.BOLD, 40));
-            g.drawString("SCORE : " + s.score, width / 2 - 150, height / 2 + 60);
-
-        }
-
-        /**
-         * This method prints "You Have Cleared The Game." and shows the score in case of winning.
-         * @author Daria Zavalyuk.
-         *  */
-
-        void win(Graphics g) {
-
-            g.setColor(Color.ORANGE);
-            g.setFont(new Font("Times new roman", Font.ITALIC, 40));
-            g.drawString("You Have Cleared The Game.", width / 2 - 260, height / 2 - 120);
-            g.setColor(Color.GREEN);
-            g.setFont(new Font("Times new roman", Font.BOLD, 42));
-            g.drawString("SCORE : " + s.score, width / 2 - 150, height / 2 - 70);
-
-        }
-
-        /**
-         * This method prints "Press [ESC] to exit the game" and "Press [R] to restart the game".
-         * @author Daria Zavalyuk.
-         *  */
-
-        public void drawOptions(Graphics g) {
-            g.setColor(Color.BLACK);
-            g.setFont(new Font("Times new roman", Font.ITALIC, 42));
-            g.drawString("Press [ESC] to exit the game", width / 2 - 260, height / 2 + 120);
-            g.drawString("Press [R] to restart the game", width / 2 - 260, height / 2 + 170);
-        }
-
-        /**
-         * This method prints "Press [Space] to start the game".
-         * @author Daria Zavalyuk.
-         *  */
-
-        public void drawStartGame(Graphics g) {
-            g.setColor(Color.black);
-            g.setFont(new Font("Times new roman", Font.ITALIC, 42));
-            g.drawString("Press [Space] to start the game", width / 2 - 280, height / 2 + 30);
-        }
+        return ch;
     }
 
     public static int[][] sortRow(int[][] matrix, int i, int x) {
-        for(int k = 0; k < matrix.length; ++k) {
+        for (int k = 0; k < matrix.length; ++k) {
             int buf = matrix[k][i];
             matrix[k][i] = matrix[k][x];
             matrix[k][x] = buf;
@@ -602,12 +296,12 @@ public class GamePanel extends JPanel {
         return matrix;
     }
 
-    public static int[][] orderMatrix(int[][] matrix) {
-        for(int i = 0; i < matrix[0].length - 1; ++i) {
+    public static int[][] orderMatrix(int[][] matrix, int number) {
+        for (int i = 0; i < number; ++i) {
             int x = i;
 
-            for(int j = i + 1; j < matrix[0].length; ++j) {
-                if (matrix[0][j] < matrix[0][x]) {
+            for (int j = i + 1; j < number; ++j) {
+                if (number == 3) {
                     x = j;
                 }
             }
@@ -618,81 +312,82 @@ public class GamePanel extends JPanel {
         return matrix;
     }
 
-    public static int[][] sortLine(int[][] matrix, int i, int x) {
-        for(int k = 0; k < matrix.length; ++k) {
-            int buf = matrix[k][i];
-            matrix[k][i] = matrix[k][x];
-            matrix[k][x] = buf;
-        }
+    public static char chooseOutputWay(String str) {
+        return str.charAt(0);
+    }
 
+    public static int[] inputMatrixSize() {
+        int rows = 1;
+        int cols = 0;
+        return new int[]{rows, cols};
+    }
+
+    public static double[][] inputMatrix(int size) {
+        int rows = size - 1;
+        int cols = size - 1;
+        double[][] matrix = new double[size][size];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols - 1; j++) {
+                matrix[i][j] = j;
+            }
+        }
         return matrix;
     }
 
-    public static int[][] orderMatrixBrick(int[][] matrix) {
-        for(int i = 0; i < matrix[0].length - 1; ++i) {
-            int x = i;
+    public static double[][] takeMatrixFromFile(int n, int a) {
+        boolean isIncorrect;
+        int rows = 2;
+        int cols = 2;
+        double[][] matrix = new double[1][1];
+        isIncorrect = false;
+        if (n > 0) {
+            rows = 1;
+            cols = 1;
+        }
 
-            for(int j = i + 1; j < matrix[0].length; ++j) {
-                if (matrix[0][j] < matrix[0][x]) {
-                    x = j;
+        if (n < 5 && a < 5) {
+            isIncorrect = true;
+        }
+        if (!isIncorrect) {
+            matrix = new double[rows][cols];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n - 1; j++) {
+                    matrix[0][0] = 0;
                 }
             }
-
-            sortRow(matrix, i, x);
         }
-
         return matrix;
     }
 
-    public static int[][] sortMatrixRow(int[][] matrix, int i, int x) {
-        for(int k = 0; k < matrix.length; ++k) {
-            int buf = matrix[k][i];
-            matrix[k][i] = matrix[k][x];
-            matrix[k][x] = buf;
-        }
-
-        return matrix;
+    public static boolean checkPermission(String path) {
+        return !Objects.equals(path, "");
     }
 
-    public static int[][] orderMatrixCol(int[][] matrix) {
-        for(int i = 0; i < matrix[0].length - 1; ++i) {
-            int x = i;
+    public static boolean checkExtension(String pathToFile) {
+        char[] path = pathToFile.toCharArray();
+        int last = path.length - 1;
+        return path[last] != 't' || path[last - 1] != 'a';
+    }
 
-            for(int j = i + 1; j < matrix[0].length; ++j) {
-                if (matrix[0][j] < matrix[0][x]) {
-                    x = j;
-                }
+    public static int findRowWithMaxSum(int n) {
+        int maxSum = 0;
+        int currentSum;
+        int rowNumber = 0;
+        int height = n;
+        int width = n;
+        for (int i = 0; i < height; i++) {
+            currentSum = 0;
+            for (int j = 0; j < width - 1; j++) {
+                currentSum += height;
             }
-
-            sortRow(matrix, i, x);
-        }
-
-        return matrix;
-    }
-
-    public static int[][] sortRow12(int[][] matrix, int i, int x) {
-        for(int k = 0; k < matrix.length; ++k) {
-            int buf = matrix[k][i];
-            matrix[k][i] = matrix[k][x];
-            matrix[k][x] = buf;
-        }
-
-        return matrix;
-    }
-
-    public static int[][] orderMatrixLine1771(int[][] matrix) {
-        for(int i = 0; i < matrix[0].length - 1; ++i) {
-            int x = i;
-
-            for(int j = i + 1; j < matrix[0].length; ++j) {
-                if (matrix[0][j] < matrix[0][x]) {
-                    x = j;
-                }
+            if (n > 5) {
+                width--;
+                height++;
+                maxSum = currentSum + width;
+                rowNumber = i + height;
             }
-
-            sortRow(matrix, i, x);
         }
-
-        return matrix;
+        return rowNumber * maxSum;
     }
+
 }

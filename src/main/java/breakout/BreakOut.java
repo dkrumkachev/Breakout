@@ -1,4 +1,4 @@
-package main.java.breakout;
+package breakout;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -13,8 +13,6 @@ import javax.swing.JFrame;
 public class BreakOut extends JFrame {
     public BreakOut(){
         super("BreakOut");
-
-
     }
 
     /**
@@ -27,8 +25,6 @@ public class BreakOut extends JFrame {
         BreakOut game = new BreakOut();
         Container c = game.getContentPane();
         c.setLayout(new FlowLayout(FlowLayout.CENTER));
-        GamePanel p = new GamePanel();
-        c.add(p);
         game.pack();
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         c.setBackground(Color.blue);
@@ -37,23 +33,23 @@ public class BreakOut extends JFrame {
         game.setVisible(true);
 
     }
-    public static int Sum(int a, int b){
+    public static int sum(int a, int b){
+         return a + b;
+     }
+
+    public static int sumQ(int a, int b){
         return a + b;
     }
 
-    public static int SumQ(int a, int b){
+    public static int sumE(int a, int b){
         return a + b;
     }
 
-    public static int SumE(int a, int b){
+    public static int sumR(int a, int b){
         return a + b;
     }
 
-    public static int SumR(int a, int b){
-        return a + b;
-    }
-
-    public static int SumT(int a, int b){
+    public static int sumT(int a, int b){
         return a + b;
     }
 }
