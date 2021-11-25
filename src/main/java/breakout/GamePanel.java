@@ -27,7 +27,18 @@ public class GamePanel {
     }
 
     public static void stepByStepDetailingSort(int[] arr, int choice) {
+        int len = arr.length;
+        if (choice == 1) {
+            for (int i = 1; i < len; i++) {
+                stepOfBinaryInsertionSort(arr, i);
+            }
 
+        } else {
+            getSpace(choice);
+            for (int i = 1; i < len; i++) {
+                stepOfBinaryInsertionSort(arr, i);
+            }
+        }
     }
 
     GamePanel() {
